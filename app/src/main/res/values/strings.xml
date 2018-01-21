@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ServiceInnovation</string>
+    
+    <!--xyj-->
+    <string name="homePage">首页</string>
+    <string name="forum">论坛</string>
+    <string name="project">项目</string>
+    <string name="mine">我的</string>
+    
+
+</resources>
