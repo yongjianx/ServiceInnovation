@@ -47,7 +47,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 imageView.setImageResource(R.drawable.xyj_mine_state);
                 break;
             default:
-                    break;
+                break;
         }
         return view;
     }

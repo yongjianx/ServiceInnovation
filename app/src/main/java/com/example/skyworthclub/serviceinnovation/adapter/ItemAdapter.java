@@ -56,7 +56,7 @@ public class ItemAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if(viewHolder == null){
             viewHolder = new ViewHolder();
-            convertView = layoutInflater.inflate(R.layout.xyj_hp_listitem, null);
+            convertView = layoutInflater.inflate(R.layout.xyj_hp_listitem, parent, false);
             viewHolder.mImageView = convertView.findViewById(R.id.xyj_pic);
             viewHolder.mProjectName = convertView.findViewById(R.id.xyj_projectName);
             viewHolder.mReleaseTime = convertView.findViewById(R.id.xyj_releaseTime);
