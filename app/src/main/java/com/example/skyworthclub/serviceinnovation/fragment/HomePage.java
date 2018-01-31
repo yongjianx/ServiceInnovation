@@ -49,7 +49,6 @@ public class HomePage extends Fragment implements AdapterView.OnItemClickListene
     private List<HashMap<String, String>> datas;
     private HashMap<String, String> mHashMap = new HashMap<>();
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

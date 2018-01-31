@@ -27,6 +27,7 @@
                 android:id="@+id/xyj_projectName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
                 android:layout_weight="1"/>
 
             <TextView
@@ -34,6 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
+                android:fontFamily="@font/noto_sans"
                 android:gravity="right"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -47,7 +49,8 @@
             <TextView
                 android:id="@+id/xyj_companyName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"/>
         </LinearLayout>
 
         <LinearLayout
@@ -60,12 +63,14 @@
                 android:id="@+id/xyj_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
                 android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/xyj_cycleTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
                 android:gravity="center"
                 android:layout_weight="1"/>
 

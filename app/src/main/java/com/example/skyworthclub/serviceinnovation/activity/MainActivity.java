@@ -1,11 +1,14 @@
 package com.example.skyworthclub.serviceinnovation.activity;
 
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TableLayout;
 
 import com.example.skyworthclub.serviceinnovation.R;
 import com.example.skyworthclub.serviceinnovation.adapter.ViewPagerAdapter;
@@ -34,6 +37,26 @@ public class MainActivity extends AppCompatActivity {
 
         init();
         initContent();
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.getCustomView().findViewById(R.id.xyj_tab_image).setFocusable(true);
+                tab.getCustomView().findViewById(R.id.xyj_tab_text).setFocusable(true);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.getCustomView().findViewById(R.id.xyj_tab_image).setFocusable(false);
+                tab.getCustomView().findViewById(R.id.xyj_tab_text).setFocusable(false);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
     }
 
     private void init(){
@@ -63,6 +86,14 @@ public class MainActivity extends AppCompatActivity {
                 fragmentLists);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        //加载tabLayout的自定义布局
+        for (int i=0; i<tabLayout.getTabCount(); i++){
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            if (tab != null){
+                tab.setCustomView(viewPagerAdapter.getTabView(this, i));
+            }
+        }
     }
 
 
