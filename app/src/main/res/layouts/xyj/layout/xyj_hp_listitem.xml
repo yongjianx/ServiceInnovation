@@ -14,18 +14,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_weight="1">
+            android:paddingTop="14dp">
 
             <TextView
                 android:id="@+id/xyj_projectName"
@@ -34,6 +31,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorBlack2"
                 android:fontFamily="@font/noto_sans"
+                android:gravity="top"
                 android:layout_weight="1"/>
 
             <TextView
@@ -50,10 +48,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="24dp"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_weight="1">
+            android:gravity="bottom">
 
             <TextView
                 android:id="@+id/xyj_companyName"
@@ -66,10 +63,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_weight="1">
+            android:gravity="bottom">
 
             <TextView
                 android:id="@+id/xyj_address"
@@ -87,7 +83,7 @@
                 android:fontFamily="@font/noto_sans"
                 android:textSize="14sp"
                 android:textColor="@color/colorGray2"
-                android:gravity="center"
+
                 android:layout_weight="1"/>
 
             <TextView

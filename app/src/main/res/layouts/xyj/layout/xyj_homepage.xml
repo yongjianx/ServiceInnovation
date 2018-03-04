@@ -46,39 +46,13 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/xyj_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="84dp">
 
     </android.support.v7.widget.RecyclerView>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/colorGray"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:gravity="center_vertical"
-            android:text="@string/xyj_mySubscription"
-            android:layout_weight="9"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/xyj_menu24px"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="8dp"
         android:background="@color/colorGray"/>
 
     <ListView

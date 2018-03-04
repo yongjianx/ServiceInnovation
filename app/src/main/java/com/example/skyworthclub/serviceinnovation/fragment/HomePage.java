@@ -70,7 +70,7 @@ public class HomePage extends Fragment implements AdapterView.OnItemClickListene
 
             //listView
             hashMap.clear();
-            hashMap.put("projectName", "android");
+            hashMap.put("projectName", "创维俱乐部");
             hashMap.put("releaseTime", "2018-1-10");
             hashMap.put("companyName", "腾讯");
             hashMap.put("address", "深圳");
