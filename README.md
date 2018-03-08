@@ -4,8 +4,9 @@
 \
 一、java文件\
   1、按模块功能分类，共四个模块(四个文件夹)：homepage,forum,project,mine；其中，每个文件夹下分activity,adapter,fragment,utils四个文件夹。\
-  2、自己创建哪个功能模块的什么类型的.java文件就放在相应的文件夹下。\
-  3、.java文件命名无具体要求，不重名即可。如重名，前缀加上模块名。如：Back.java与Back.java重名，则命名为HomepageBack.java,ForumBack.java.\
+  2、自己创建哪个功能模块的什么类型的.java文件就放在相应的文件夹下。（utils文件夹存放工具类）\
+  3、如确有需要新建文件夹，也可新建（不建议）\
+  4、.java文件命名无具体要求，不重名即可。最好前缀加上模块名。如重名：Back.java与Back.java重名，则命名为HomepageBack.java,ForumBack.java.\
   \
 二、图片资源\
   1、drawable文件夹下只存放.xml文件。\
@@ -17,5 +18,5 @@
   \
 三、layout文件\
   1、同java文件，在自己相应的文件夹下创建并编辑。\
-  2、命名：同图片资源命名，前缀统一加上模块名。
+  2、命名：同图片资源命名，前缀统一加上模块名。\
   3、控件命名：同图片资源命名，前缀统一加上模块名。如mine_message,mine_data.\
