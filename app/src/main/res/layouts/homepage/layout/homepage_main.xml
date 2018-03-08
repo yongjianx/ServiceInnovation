@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="144dp">
+
+        <com.youth.banner.Banner
+            android:id="@+id/xyj_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.youth.banner.Banner>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="17dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/homepage_search28px"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/xyj_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="84dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/colorGray"/>
+
+    <ListView
+        android:id="@+id/xyj_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+</LinearLayout>
