@@ -3,7 +3,7 @@
 ##在自己的文件夹下创建.java文件或.xml文件时，如果文件夹下有.ignore文件，先把.ignore文件先删除，再创建！！！如java文件下的Mine文件夹下的activity文件夹下有一个.ignore文件，则先把.ignore文件先删除，在创建activity文件。##\
 \
 一、java文件\
-  1、按模块功能分类，共四个模块(四个文件夹)：homepage,forum,project,mine；其中，每个文件夹下分activity,adapter,fragment,utils四个文件夹。\
+  1、按模块功能分类，共四个模块(四个文件夹)：Homepage,Forum,Project,Mine(Main文件夹存放MainActivity相关文件，不要在此编辑)；其中，每个文件夹下分activity,adapter,fragment,utils四个文件夹。\
   2、自己创建哪个功能模块的什么类型的.java文件就放在相应的文件夹下。（utils文件夹存放工具类）\
   3、如确有需要新建文件夹，也可新建（不建议）\
   4、.java文件命名无具体要求，不重名即可。最好前缀加上模块名。如重名：Back.java与Back.java重名，则命名为HomepageBack.java,ForumBack.java.\
