@@ -1,7 +1,6 @@
 # ServiceInnovation
 \
-#######在自己的文件夹下创建.java文件或.xml文件时，如果文件夹下有.ignore文件，先把.ignore文件先删除，再创建！！！如java文件下的Mine文件夹下的activity文件夹下有一个.ignore文件，则先把.ignore文件先删除，在创建activity文件。
-\
+#######在自己的文件夹下创建.java文件或.xml文件时，如果文件夹下有.ignore文件，先把.ignore文件先删除，再创建！！！如java文件下的Mine文件夹下的activity文件夹下有一个.ignore文件，则先把.ignore文件先删除，在创建activity文件。\
 一、java文件\
   1、按模块功能分类，共四个模块(四个文件夹)：homepage,forum,project,mine；其中，每个文件夹下分activity,adapter,fragment,utils四个文件夹。\
   2、自己创建哪个功能模块的什么类型的.java文件就放在相应的文件夹下。\
