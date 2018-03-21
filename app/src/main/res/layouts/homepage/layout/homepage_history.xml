@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="top"
+            android:fontFamily="@font/noto_sans"
+            android:textColor="@color/colorBlack2"
+            android:textSize="16sp"
+            android:text="@string/search_history"/>
+
+        <TextView
+            android:id="@+id/clear_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="17dp"
+            android:fontFamily="@font/noto_sans"
+            android:textSize="14sp"
+            android:textColor="@color/colorGray2"
+            android:text="@string/clear_history"/>
+    </RelativeLayout>
+
+    <com.example.skyworthclub.serviceinnovation.Homepage.view.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp">
+
+    </com.example.skyworthclub.serviceinnovation.Homepage.view.SearchView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans"
+            android:textColor="@color/colorBlack2"
+            android:textSize="16sp"
+            android:text="@string/hot_search"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hot_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
+                android:textSize="14sp"
+                android:textColor="@color/colorBlack2"
+                android:text="互联网"
+                android:background="@drawable/homepage_history_background"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
