@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"/>
+<android.support.v7.widget.Toolbar
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    app:titleTextColor="#ff000000"
+    app:title="我的项目"
+    android:layout_height="?attr/actionBarSize">
+</android.support.v7.widget.Toolbar>
 
 </LinearLayout>
