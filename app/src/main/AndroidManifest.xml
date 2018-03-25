@@ -16,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Mine.activity.Mine_data"
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".Mine.activity.Mine_resume"
@@ -24,9 +25,12 @@
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".Mine.activity.Mine_add_sub"
             android:windowSoftInputMode="stateHidden"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Homepage.activity.HomepageSearch"></activity>
     </application>
 
 </manifest>
