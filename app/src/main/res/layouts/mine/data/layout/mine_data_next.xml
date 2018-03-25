@@ -11,8 +11,9 @@
         android:background="#F7F7F7">
         <ImageView
             android:id="@+id/mine_data_title_back"
-            android:layout_width="13dp"
-            android:layout_height="21dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/back_icon"
             android:layout_centerVertical="true"
             android:layout_marginLeft="9dp"/>
         <TextView
@@ -20,17 +21,17 @@
             android:layout_height="wrap_content"
             android:text="完善资料（2/2）"
             android:textColor="#000000"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:fontFamily="@font/noto_sans"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
         <TextView
             android:id="@+id/mine_data_title_next"
-            android:layout_width="41dp"
-            android:layout_height="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="完成"
             android:textColor="#007AFF"
-            android:textSize="14pt"
+            android:textSize="16sp"
             android:fontFamily="@font/noto_sans"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -52,11 +53,11 @@
         android:text="期望薪酬"
         android:fontFamily="@font/noto_sans"
         android:textColor="#121212"
-        android:textSize="16px"
+        android:textSize="16dp"
         android:layout_toRightOf="@id/spot"
         android:layout_marginLeft="15dp"
         android:layout_below="@id/mine_data_title_second"
-        android:layout_marginTop="27dp"/>
+        android:layout_marginTop="20dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -78,17 +79,20 @@
             android:text="（最多五位数）"
             android:textColor="#9E9E9E"
             android:textSize="12sp"
+            android:singleLine="true"
             android:fontFamily="@font/noto_sans"
             android:layout_centerVertical="true"
             android:layout_marginLeft="83dp"/>
         <EditText
             android:id="@+id/first_interval"
-            android:layout_width="50dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:theme="@style/MyEditText"
+            android:singleLine="true"
+            android:maxLength="5"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="93dp"/>
+            android:layout_marginRight="86dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,12 +102,15 @@
             android:fontFamily="@font/noto_sans"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="75dp"
+            android:layout_marginRight="68dp"
             />
         <EditText
-            android:layout_width="50dp"
+            android:id="@+id/second_intervals"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:theme="@style/MyEditText"
+            android:singleLine="true"
+            android:maxLength="5"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="18dp"/>

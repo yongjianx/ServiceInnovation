@@ -46,6 +46,7 @@
         android:id="@+id/mine_resume_number"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:text="ada"
         android:textColor="#9E9E9E"
         android:textSize="12sp"
         android:fontFamily="@font/noto_sans"
