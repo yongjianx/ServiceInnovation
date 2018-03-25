@@ -18,9 +18,12 @@
         </activity>
         <activity android:name=".Mine.activity.Mine_data"/>
         <activity android:name=".Mine.activity.Mine_resume"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Homepage.activity.HomepageSearch"></activity>
     </application>
 
 </manifest>
