@@ -13,10 +13,11 @@
     android:layout_centerVertical="true"
     android:layout_marginLeft="16dp"/>
     <EditText
-        android:id="@+id/minee_add_sub_address"
+        android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="请输入地址"
+        android:maxLength="10"
         android:textSize="16dp"
         android:textColor="#3F88FC"
         android:fontFamily="@font/noto_sans"

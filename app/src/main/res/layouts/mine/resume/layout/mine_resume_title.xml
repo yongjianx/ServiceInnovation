@@ -11,8 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/back_icon"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="9dp"/>
+        android:layout_centerVertical="true" />
     <TextView
         android:id="@+id/mine_resume_title_tv"
         android:layout_width="wrap_content"
@@ -28,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="编辑"
+        android:textColor="#007AFF"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="17dp"

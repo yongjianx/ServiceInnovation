@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.skyworthclub.serviceinnovation.Mine.adapter.RelativeLayoutAdapter;
 import com.example.skyworthclub.serviceinnovation.Mine.utils.MyRelativeLayout;
@@ -38,14 +39,14 @@ public class Mine_resume extends AppCompatActivity {
         RecyclerView recyclerView=findViewById(R.id.resume_recyclerView);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        RelativeLayoutAdapter adapter=new RelativeLayoutAdapter(relativeLayouts);
+        RelativeLayoutAdapter adapter=new RelativeLayoutAdapter(relativeLayouts,edit_status);
         recyclerView.setAdapter(adapter);
     }
-
     private void initTitleView() {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(Mine_resume.this, "click back", Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder dialog=new AlertDialog.Builder(v.getContext());
                 dialog.setMessage("直接退出所有修改将不做保存，是否确定退出修改");
                 dialog.setCancelable(false);
@@ -53,6 +54,7 @@ public class Mine_resume extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //写退出操作
+                        onBackPressed();
                     }
                 });
                 dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -61,6 +63,7 @@ public class Mine_resume extends AppCompatActivity {
                         //回到编辑界面
                     }
                 });
+                dialog.show();
             }
         });
         textView.setOnClickListener(new View.OnClickListener() {
@@ -69,10 +72,15 @@ public class Mine_resume extends AppCompatActivity {
                 if (edit_status==0){
                 edit_status=1;
                 textView.setText("保存");
-                    //设置editview为可编辑状态}
+                    Toast.makeText(Mine_resume.this, "baocun", Toast.LENGTH_SHORT).show();
+
+                    //设置editview为可编辑状态
+                    }
                 else {
                     edit_status=0;
-                    //设置为不可编辑状态
+                    textView.setText("编辑");
+                    Toast.makeText(Mine_resume.this, "bianji", Toast.LENGTH_SHORT).show();
+                    //设置为不可编辑状态,同时保存数据
                     }
             }
         });

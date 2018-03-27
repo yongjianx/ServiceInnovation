@@ -6,6 +6,16 @@
     android:background="#EEEEEE">
 <include layout="@layout/mine_add_sub_title"
     android:id="@+id/mine_add_sub_title" />
+    <TextView
+        android:layout_width="307dp"
+        android:layout_height="44dp"
+        android:text="添加订阅后，首页将优先展示订阅的项目"
+        android:background="@drawable/resume_textview"
+        android:textColor="#FFFFFF"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/mine_add_sub_title" />
+        
     <include layout="@layout/mine_add_sub_address"
         android:id="@+id/mine_add_sub_address"
         android:layout_below="@id/mine_add_sub_title"
@@ -34,7 +44,7 @@
         android:id="@+id/mine_add_sub_button"
         android:layout_width="311dp"
         android:layout_height="36dp"
-        android:background="#3F88FC"
+        android:background="@drawable/resume_textview"
         android:text="完成"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
