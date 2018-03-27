@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.skyworthclub.serviceinnovation.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,14 +24,18 @@ public class HorizontalItemAdapter extends RecyclerView.Adapter<HorizontalItemAd
     //事件回调监听
     private HorizontalItemAdapter.OnItemClickListener onItemClickListener;
 
-    private List<HashMap<String, String>> mDatas;
+    //文字信息
+//    private List<HashMap<String, String>> mDatas;
+    private List<String> mDatas;
+    //图标信息
     private Bitmap bitmap;
+    private List<Bitmap> bitmaps = new ArrayList<>();
 
-    public HorizontalItemAdapter(List<HashMap<String, String>> mDatas){
+    public HorizontalItemAdapter(List<String> mDatas){
         this.mDatas = mDatas;
     }
 
-    public void updataData(List<HashMap<String, String>> datas){
+    public void updataData(List<String> datas){
         mDatas = datas;
         notifyDataSetChanged();
     }
@@ -40,7 +45,18 @@ public class HorizontalItemAdapter extends RecyclerView.Adapter<HorizontalItemAd
         //实例化需要展示的view
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.homepage_horizontal_item, parent, false);
 
-        bitmap = BitmapFactory.decodeResource(parent.getResources(), R.drawable.homepage_earth48px);
+        bitmap = BitmapFactory.decodeResource(parent.getResources(), R.drawable.homepage_internet);
+        bitmaps.add(bitmap);
+        bitmap = BitmapFactory.decodeResource(parent.getResources(), R.drawable.homepage_electron);
+        bitmaps.add(bitmap);
+        bitmap = BitmapFactory.decodeResource(parent.getResources(), R.drawable.homepage_media);
+        bitmaps.add(bitmap);
+        bitmap = BitmapFactory.decodeResource(parent.getResources(), R.drawable.homepage_machine);
+        bitmaps.add(bitmap);
+        bitmap = BitmapFactory.decodeResource(parent.getResources(), R.drawable.homepage_educate);
+        bitmaps.add(bitmap);
+        bitmap = BitmapFactory.decodeResource(parent.getResources(), R.drawable.homepage_language);
+        bitmaps.add(bitmap);
 
         //实例化viewHolder
         ViewHolder viewHolder = new ViewHolder(view);
@@ -55,8 +71,8 @@ public class HorizontalItemAdapter extends RecyclerView.Adapter<HorizontalItemAd
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int position) {
         //绑定数据
-        viewHolder.imageView.setImageBitmap(bitmap);
-        viewHolder.textView.setText(mDatas.get(position).get("HpItemContent"));
+        viewHolder.imageView.setImageBitmap(bitmaps.get(position));
+        viewHolder.textView.setText(mDatas.get(position));
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEE">
+<include layout="@layout/mine_add_sub_title"
+    android:id="@+id/mine_add_sub_title" />
+    <include layout="@layout/mine_add_sub_address"
+        android:id="@+id/mine_add_sub_address"
+        android:layout_below="@id/mine_add_sub_title"
+        android:layout_marginTop="48dp"
+        android:layout_height="48dp"
+        android:layout_width="match_parent" />
+    <include layout="@layout/mine_add_sub_project"
+        android:id="@+id/mine_add_sub_project"
+        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/mine_add_sub_address"
+        android:layout_marginTop="1dp"/>
+    <include layout="@layout/mine_add_sub_cycle"
+        android:id="@+id/mine_add_sub_cycle"
+        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/mine_add_sub_project"
+        android:layout_marginTop="1dp"/>
+    <include layout="@layout/mine_add_sub_remuneration"
+        android:id="@+id/mine_add_sub_remuneration"
+        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/mine_add_sub_cycle"
+        android:layout_marginTop="1dp"/>
+    <Button
+        android:id="@+id/mine_add_sub_button"
+        android:layout_width="311dp"
+        android:layout_height="36dp"
+        android:background="#3F88FC"
+        android:text="完成"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_below="@id/mine_add_sub_remuneration"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+</RelativeLayout>

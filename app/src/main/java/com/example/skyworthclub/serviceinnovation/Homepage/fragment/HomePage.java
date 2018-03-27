@@ -1,5 +1,6 @@
 package com.example.skyworthclub.serviceinnovation.Homepage.fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,9 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.skyworthclub.serviceinnovation.Homepage.activity.HomepageSearch;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.GlideImageLoader;
 import com.example.skyworthclub.serviceinnovation.R;
@@ -50,8 +53,7 @@ public class HomePage extends Fragment {
 
     //横向listView
     private HorizontalItemAdapter HorizontalItemAdapter;
-    private List<HashMap<String, String>> datas = new ArrayList<>();
-    private HashMap<String, String> mHashMap = new HashMap<>();
+    private List<String> datas = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,12 +66,15 @@ public class HomePage extends Fragment {
 
         bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.homepage_android);
 
-        for (int i=0; i<6; i++){
-            //recyclerView
-            mHashMap.clear();
-            mHashMap.put("HpItemContent", "android");
-            datas.add(mHashMap);
+        //recyclerView
+        datas.add("互联网");
+        datas.add("电子电气");
+        datas.add("媒体设计");
+        datas.add("机械制造");
+        datas.add("教育咨询");
+        datas.add("外语外贸");
 
+        for (int i=0; i<6; i++){
             //listView
             projectHashMap.clear();
             projectHashMap.put("projectName", "创维俱乐部");
@@ -89,15 +94,25 @@ public class HomePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.homepage_main, container, false);
         banner = view.findViewById(R.id.xyj_banner);
+        recyclerView = view.findViewById(R.id.xyj_recyclerView);
+        projectListView = view.findViewById(R.id.xyj_listView);
+        ImageView homepageSearch = view.findViewById(R.id.homepage_search);
+
+        //search搜索的点击事件
+        homepageSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), HomepageSearch.class);
+                startActivity(intent);
+            }
+        });
 
         initHorizontalView();
-        recyclerView = view.findViewById(R.id.xyj_recyclerView);
         // 设置布局管理器
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(HorizontalItemAdapter);
 
         //listView的配置
-        projectListView = view.findViewById(R.id.xyj_listView);
         VerticalItemAdapter = new VerticalItemAdapter(getContext(), projectDatas, projectBitmap);
         VerticalItemAdapter.setOnItemClickListener(new VerticalItemAdapter.OnItemClickListener() {
             @Override

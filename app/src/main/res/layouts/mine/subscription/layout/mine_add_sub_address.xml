@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#FFFFFF">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="期望地点"
+    android:textSize="16dp"
+    android:textColor="#121212"
+    android:fontFamily="@font/noto_sans"
+    android:layout_centerVertical="true"
+    android:layout_marginLeft="16dp"/>
+    <EditText
+        android:id="@+id/minee_add_sub_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="请输入地址"
+        android:textSize="16dp"
+        android:textColor="#3F88FC"
+        android:fontFamily="@font/noto_sans"
+        android:layout_marginRight="31dp"
+        android:background="@null"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

@@ -5,8 +5,10 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/mine_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"/>
+        android:text="@string/app_name"
+        android:clickable="true"/>
 
 </LinearLayout>

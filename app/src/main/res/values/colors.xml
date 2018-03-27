@@ -9,6 +9,10 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray2">#9e9e9e</color>
+    <color name="colorEAEAEA">#EAEAEA</color>
+    <color name="colorEEEEEE">#EEEEEE</color>
+    <color name="colorF7F7F7">#F7F7F7</color>
     <color name="colorBlack2">#121212</color>
     <color name="colorBlue">#3f88fc</color>
+    <color name="homepage_back">#007AFF</color>
 </resources>
