@@ -1,6 +1,7 @@
 package com.example.skyworthclub.serviceinnovation.Homepage.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -27,6 +28,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class HomepageSearch extends AppCompatActivity {
@@ -52,6 +54,11 @@ public class HomepageSearch extends AppCompatActivity {
         limitQueue.offer("sucess");
         sharedPreferencesUtil = new SharedPreferencesUtil(HomepageSearch.this);
         sharedPreferencesUtil.putObject(limitQueue, "history");
+
+        SharedPreferences sharedPreferences = sharedPreferencesUtil.getSharedPreferences();
+        SharedPreferences.Editor editor = sharedPreferencesUtil.getEditor();
+        editor.putString("key", "test");
+        editor.commit();
 
         //测试代码
         for (int i=0; i<5; i++){

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.skyworthclub.serviceinnovation.Homepage.activity.HomepageSearch;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.GlideImageLoader;
+import com.example.skyworthclub.serviceinnovation.Homepage.utils.SharedPreferencesUtil;
 import com.example.skyworthclub.serviceinnovation.R;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalItemAdapter;
