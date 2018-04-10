@@ -1,5 +1,6 @@
 package com.example.skyworthclub.serviceinnovation.Homepage.utils;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.LinkedList;
 固定长度队列实现
 @params limit 队列长度
  */
-public class LimitQueue<E> {
+public class LimitQueue<E> implements Serializable{
     private int limit;
     private LinkedList<E> queue = new LinkedList<>();
 
@@ -44,6 +45,10 @@ public class LimitQueue<E> {
     //获取队列长度
     public int getLimit() {
         return limit;
+    }
+
+    public int getSize(){
+        return queue.size();
     }
 
     public void clear(){

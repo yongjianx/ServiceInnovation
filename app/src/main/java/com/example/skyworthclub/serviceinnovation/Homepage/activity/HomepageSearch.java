@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalItemAdapter;
+import com.example.skyworthclub.serviceinnovation.Homepage.utils.LimitQueue;
+import com.example.skyworthclub.serviceinnovation.Homepage.utils.SharedPreferencesUtil;
 import com.example.skyworthclub.serviceinnovation.Homepage.view.SearchView;
 import com.example.skyworthclub.serviceinnovation.R;
 
@@ -35,6 +37,9 @@ public class HomepageSearch extends AppCompatActivity {
     private SearchView searchView;
     private TextView clearHistory;
 
+    private LimitQueue<String> limitQueue;
+    private SharedPreferencesUtil sharedPreferencesUtil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,11 @@ public class HomepageSearch extends AppCompatActivity {
         init();
         //子view的间距
         searchView.setSpace(20, 20);
+
+        limitQueue = new LimitQueue<String>(5);
+        limitQueue.offer("sucess");
+        sharedPreferencesUtil = new SharedPreferencesUtil(HomepageSearch.this);
+        sharedPreferencesUtil.putObject(limitQueue, "history");
 
         //测试代码
         for (int i=0; i<5; i++){
