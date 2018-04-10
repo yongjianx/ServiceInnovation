@@ -52,13 +52,9 @@ public class HomepageSearch extends AppCompatActivity {
 
         limitQueue = new LimitQueue<String>(5);
         limitQueue.offer("sucess");
+
         sharedPreferencesUtil = new SharedPreferencesUtil(HomepageSearch.this);
         sharedPreferencesUtil.putObject(limitQueue, "history");
-
-        SharedPreferences sharedPreferences = sharedPreferencesUtil.getSharedPreferences();
-        SharedPreferences.Editor editor = sharedPreferencesUtil.getEditor();
-        editor.putString("key", "test");
-        editor.commit();
 
         //测试代码
         for (int i=0; i<5; i++){

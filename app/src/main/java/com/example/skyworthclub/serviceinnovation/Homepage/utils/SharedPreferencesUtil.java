@@ -12,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Set;
 
 /**
  * Created by skyworthclub on 2018/4/10.
@@ -26,12 +27,48 @@ public class SharedPreferencesUtil {
         editor = sharedPreferences.edit();
     }
 
-    public SharedPreferences getSharedPreferences(){
-        return sharedPreferences;
+    public boolean putString(String key, String string){
+        editor.putString(key, string);
+        return editor.commit();
     }
 
-    public SharedPreferences.Editor getEditor(){
-        return editor;
+    public boolean putInt(String key, int num){
+        editor.putInt(key, num);
+        return editor.commit();
+    }
+
+    public boolean putFloat(String key, float num){
+        editor.putFloat(key, num);
+        return editor.commit();
+    }
+
+    public boolean putBoolean(String key, boolean value){
+        editor.putBoolean(key, value);
+        return editor.commit();
+    }
+
+    public boolean putLong(String key, long value){
+        editor.putLong(key, value);
+        return editor.commit();
+    }
+
+    public boolean putStringSet(String key, Set<String> values){
+        editor.putStringSet(key, values);
+        return editor.commit();
+    }
+
+    /*
+    remove 输出已存储的数据
+    @params key 键值
+     */
+    public boolean remove(String key){
+        editor.remove(key);
+        return editor.commit();
+    }
+
+    public boolean clear(){
+        editor.clear();
+        return editor.commit();
     }
 
     /*
