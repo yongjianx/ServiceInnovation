@@ -74,7 +74,7 @@ public class HomePage extends Fragment {
         datas.add("教育咨询");
         datas.add("外语外贸");
 
-        for (int i=0; i<6; i++){
+        for (int i=0; i<9; i++){
             //listView
             projectHashMap.clear();
             projectHashMap.put("projectName", "创维俱乐部");
