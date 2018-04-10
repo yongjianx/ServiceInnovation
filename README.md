@@ -46,13 +46,12 @@
   \
   如何查看保存的数据：\
     使用adb工具:\
-     adb shell  打开终端（注意：此时要一直运行应用）\
-     run-as <包名>(如com.example.skyworthclub.serviceinnovation是我的包名)\
-     ls 查看当前目录下所有文件以及文件夹\
-     cd shared_prefs 进入到此目录下\
-     ls 查看当前目录下所有文件以及文件夹\
-     cat com.android.serviceinnovation_preferences.xml 查看该文件内容,即你保存的数据\
-     ps:adb工具很常用，建议配全局变量
+      adb shell  打开终端（注意：此时要一直运行应用）\
+      run-as <包名>(如com.example.skyworthclub.serviceinnovation是我的包名)\
+      ls 查看当前目录下所有文件以及文件夹\
+      cd shared_prefs 进入到此目录下\
+      cat com.example.skyworthclub.serviceinnovation_preferences.xml 查看该文件内容,即你保存的数据\
+      ps:adb工具很常用，建议配全局变量\
      \
   LimitQueue为队列类（有需要可使用）：\
   @params limit为队列的固定长度\
