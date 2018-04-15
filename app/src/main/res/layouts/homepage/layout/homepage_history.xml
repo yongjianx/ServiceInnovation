@@ -40,40 +40,23 @@
 
     </com.example.skyworthclub.serviceinnovation.Homepage.view.SearchView>
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginLeft="16dp"
-        android:orientation="vertical">
+        android:fontFamily="@font/noto_sans"
+        android:textColor="@color/colorBlack2"
+        android:textSize="16sp"
+        android:text="@string/hot_search"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/noto_sans"
-            android:textColor="@color/colorBlack2"
-            android:textSize="16sp"
-            android:text="@string/hot_search"/>
+    <com.example.skyworthclub.serviceinnovation.Homepage.view.SearchView
+        android:id="@+id/hot_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:orientation="horizontal">
+    </com.example.skyworthclub.serviceinnovation.Homepage.view.SearchView>
 
-            <TextView
-                android:id="@+id/hot_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans"
-                android:textSize="14sp"
-                android:textColor="@color/colorBlack2"
-                android:text="互联网"
-                android:background="@drawable/homepage_history_background"/>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

@@ -4,9 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,8 +25,9 @@ public class SearchResult extends AppCompatActivity {
     private final static String TAG = "SearchResultActivity";
 
     private LinearLayout MainSearchResult;
+    private ImageView back;
     private EditText editText;
-    private TextView Back;
+    private TextView search;
 
     private VerticalItemAdapter verticalItemAdapter;
     //存放listView数据,耗时任务
@@ -53,21 +56,28 @@ public class SearchResult extends AppCompatActivity {
             projectDatas.add(projectHashMap);
             projectBitmap.add(bitmap);
         }
-
         addView();
 
-        Back.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s = editText.getText().toString();
+                Log.e(TAG, s);
             }
         });
     }
 
     private void init(){
         MainSearchResult = findViewById(R.id.homepage_search_result);
+        back = findViewById(R.id.homepage_search_result_back);
         editText = findViewById(R.id.homepage_editText_search_result);
-        Back = findViewById(R.id.homepage_result_back);
+        search = findViewById(R.id.homepage_result_back);
     }
 
     private void addView(){

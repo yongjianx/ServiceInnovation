@@ -31,30 +31,58 @@ public class SharedPreferencesUtil {
         editor.putString(key, string);
         return editor.commit();
     }
+    public String getString(String key){
+        String res = sharedPreferences.getString(key, "");
+        if (res.equals(""))
+            return null;
+        return res;
+    }
 
     public boolean putInt(String key, int num){
         editor.putInt(key, num);
         return editor.commit();
+    }
+    public int getInt(String key){
+        int res = sharedPreferences.getInt(key, 0);
+        return res;
     }
 
     public boolean putFloat(String key, float num){
         editor.putFloat(key, num);
         return editor.commit();
     }
+    public float getFloat(String key){
+        float res = sharedPreferences.getFloat(key, 0);
+        return res;
+    }
 
     public boolean putBoolean(String key, boolean value){
         editor.putBoolean(key, value);
         return editor.commit();
+    }
+    public boolean getBoolean(String key){
+        boolean res = sharedPreferences.getBoolean(key, false);
+        return res;
     }
 
     public boolean putLong(String key, long value){
         editor.putLong(key, value);
         return editor.commit();
     }
+    public long getLong(String key){
+        long res = sharedPreferences.getLong(key, 0);
+        return res;
+    }
 
     public boolean putStringSet(String key, Set<String> values){
         editor.putStringSet(key, values);
         return editor.commit();
+    }
+    public Set<String> getStringSet(String key){
+        Set<String> res = sharedPreferences.getStringSet(key, null);
+        if (res != null)
+            return res;
+        return null;
     }
 
     /*
@@ -92,13 +120,12 @@ public class SharedPreferencesUtil {
      */
     public Bitmap getBitmap(String key){
         String bitmapString = sharedPreferences.getString(key, "");
+        if (bitmapString.equals("") || bitmapString == null)
+            return null;
         Bitmap bitmap = null;
-        if (!bitmapString.equals("")){
-            byte[] bytes = Base64.decode(bitmapString.getBytes(), 1);
-            bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-            return bitmap;
-        }
-        return null;
+        byte[] bytes = Base64.decode(bitmapString.getBytes(), 1);
+        bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        return bitmap;
     }
 
     /*
@@ -138,7 +165,7 @@ public class SharedPreferencesUtil {
      */
     public Object getObject(String key){
         String objectString = sharedPreferences.getString(key, "");
-        if (objectString == null || objectString.equals(""))
+        if (objectString.equals("") || objectString == null)
             return null;
         byte[] bytes = Base64.decode(objectString.getBytes(), Base64.DEFAULT);
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
