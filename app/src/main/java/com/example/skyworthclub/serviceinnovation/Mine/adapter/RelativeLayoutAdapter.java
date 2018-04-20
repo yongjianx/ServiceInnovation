@@ -1,5 +1,6 @@
 package com.example.skyworthclub.serviceinnovation.Mine.adapter;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -28,11 +29,13 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
     private List<MyRelativeLayout> mrelativeLayouts;
     private int status;
     private TextWatcher mTextWatcher;
+    boolean show=true;
 
     public RelativeLayoutAdapter(List<MyRelativeLayout>relativeLayouts,int status){
         mrelativeLayouts=relativeLayouts;
         this.status=status;
     }
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public RelativeLayoutAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_item,parent,false);
@@ -40,9 +43,40 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
 //        edittext与recyclerview滑动冲突解决
         holder.meditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                v.getParent().requestDisallowInterceptTouchEvent(true);
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                //触摸的是EditText而且当前EditText能够滚动则将事件交给EditText处理。否则将事件交由其父类处理
+                if ((view.getId() == R.id.mine_resume_et && canVerticalScroll(holder.meditText))) {
+                    view.getParent().requestDisallowInterceptTouchEvent(true);
+                    if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                        view.getParent().requestDisallowInterceptTouchEvent(false);
+
+                    }
+                }else {
+                    view.getParent().requestDisallowInterceptTouchEvent(false);
+                }
                 return false;
+            }
+
+            /**
+             * EditText竖直方向能否够滚动
+             * @param editText  须要推断的EditText
+             * @return  true：能够滚动   false：不能够滚动
+             */
+            private boolean canVerticalScroll(EditText editText) {
+                //滚动的距离
+                int scrollY = editText.getScrollY();
+                //控件内容的总高度
+                int scrollRange = editText.getLayout().getHeight();
+                //控件实际显示的高度
+                int scrollExtent = editText.getHeight() - editText.getCompoundPaddingTop() -editText.getCompoundPaddingBottom();
+                //控件内容总高度与实际显示高度的差值
+                int scrollDifference = scrollRange - scrollExtent;
+
+                if(scrollDifference == 0) {
+                    return false;
+                }
+
+                return (scrollY > 0) || (scrollY < scrollDifference - 1);
             }
         });
            mTextWatcher=new TextWatcher() {
@@ -67,7 +101,10 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
                 if (position!=1) {
                     holder.mbottom_tv.setText(temp.length()+"/100");
                     if (temp.length() > 100) {
-                        Toast.makeText(view.getContext(), "不可以超过100字", Toast.LENGTH_SHORT).show();
+                        if (show) {
+                            Toast.makeText(view.getContext(), "不可以超过100字", Toast.LENGTH_SHORT).show();
+                            show=false;
+                        }
                         s.delete(editstar - 1, editend);
                         int tempSelection = editstar;
                         holder.meditText.setText(s.toString());
@@ -76,7 +113,10 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
                 }else {
                     holder.mbottom_tv.setText(temp.length()+"/200");
                     if (temp.length() > 200) {
-                        Toast.makeText(view.getContext(), "不可以超过200字", Toast.LENGTH_SHORT).show();
+                        if (show) {
+                            Toast.makeText(view.getContext(), "不可以超过200字", Toast.LENGTH_SHORT).show();
+                            show = false;
+                        }
                         s.delete(editstar - 1, editend);
                         int tempSelection = editstar;
                         holder.meditText.setText(s.toString());

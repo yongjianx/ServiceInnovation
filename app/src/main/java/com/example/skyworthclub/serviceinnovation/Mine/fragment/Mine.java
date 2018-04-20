@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,12 +22,12 @@ import com.example.skyworthclub.serviceinnovation.R;
  */
 
 public class Mine extends Fragment implements View.OnClickListener {
-    ImageView data;
-    ImageView subscribe;
-    ImageView resume;
-    ImageView info;
     ImageView setting;
     ImageView avatar;
+    RelativeLayout mine_part2;
+    RelativeLayout mine_part3;
+    RelativeLayout mine_part4;
+    RelativeLayout mine_part5;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
@@ -37,16 +38,16 @@ public class Mine extends Fragment implements View.OnClickListener {
 
     private void initView(View view) {
         setting=view.findViewById(R.id.mine_setting);
-        data=view.findViewById(R.id.mine_data_button);
-        subscribe=view.findViewById(R.id.mine_sub_button);
-        resume=view.findViewById(R.id.mine_resume_button);
-        info=view.findViewById(R.id.mine_info_button);
         avatar=view.findViewById(R.id.mine_avatar);
+        mine_part2=view.findViewById(R.id.mine_part2);
+        mine_part3=view.findViewById(R.id.mine_part3);
+        mine_part4=view.findViewById(R.id.mine_part4);
+        mine_part5=view.findViewById(R.id.mine_part5);
+        mine_part2.setOnClickListener(this);
+        mine_part3.setOnClickListener(this);
+        mine_part4.setOnClickListener(this);
+        mine_part5.setOnClickListener(this);
         setting.setOnClickListener(this);
-        data.setOnClickListener(this);
-        subscribe.setOnClickListener(this);
-        resume.setOnClickListener(this);
-        info.setOnClickListener(this);
         avatar.setOnClickListener(this);
     }
 
@@ -57,25 +58,25 @@ public class Mine extends Fragment implements View.OnClickListener {
                 Toast.makeText(v.getContext(), "setting", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.mine_data_button:{
+            case R.id.mine_part2:{
                 Toast.makeText(v.getContext(), "data", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(v.getContext(),Mine_data.class);
                 startActivity(intent);
                 break;
             }
-            case R.id.mine_resume_button:{
+            case R.id.mine_part3:{
                 Toast.makeText(v.getContext(), "resume", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(v.getContext(),Mine_resume.class);
                 startActivity(intent);
                 break;
             }
-            case R.id.mine_sub_button:{
+            case R.id.mine_part4:{
                 Toast.makeText(v.getContext(), "subscribe", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(v.getContext(),Mine_add_sub.class);
                 startActivity(intent);
                 break;
             }
-            case R.id.mine_info_button:{
+            case R.id.mine_part5: {
                 Toast.makeText(v.getContext(), "info", Toast.LENGTH_SHORT).show();
 //                Intent intent=new Intent(v.getContext(),Mine_data.class);
 //                startActivity(intent);
