@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="#EEEEEE">
+
+    <TextView
+        android:id="@+id/message_dialog_time_tv"
+        android:layout_width="138dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="119dp"
+        android:layout_marginTop="19dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="2017年12月29日 12 : 00"
+        android:textColor="#9E9E9E"
+        android:textSize="10sp"/>
+
+    <ImageView
+        android:id="@+id/dialog_portrait_img"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_below="@id/message_dialog_time_tv"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="18dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/message_info_tv"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/dialog_portrait_img"
+        android:layout_below="@id/message_dialog_time_tv"
+        android:layout_marginTop="18dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="18dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="16dp"
+        android:background="#FFFFFF"
+        android:text="对话内容 框宽度最大400px 每加一行框加高40px(即文 本行高是40px)，文本右边 距框至少28px。"
+        android:textColor="#121212"
+        android:textSize="14sp"/>
+
+</RelativeLayout>

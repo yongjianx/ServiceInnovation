@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="48dp"
+    android:background="#FFFFFF">
+    <TextView
+        android:id="@+id/file_name_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:layout_marginLeft="15dp"
+        android:layout_gravity="center_vertical"
+        android:text="文件名.rar"
+        android:textColor="#121212"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/download_file_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="下载"
+        android:textColor="#3F88FC"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/delete_file_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="#FF022D"
+        android:textSize="14sp"/>
+
+</LinearLayout>

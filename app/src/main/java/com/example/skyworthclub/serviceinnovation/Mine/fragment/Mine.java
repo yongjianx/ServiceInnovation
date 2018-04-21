@@ -11,9 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.skyworthclub.serviceinnovation.Mine.activity.LoginActivity;
 import com.example.skyworthclub.serviceinnovation.Mine.activity.Mine_add_sub;
 import com.example.skyworthclub.serviceinnovation.Mine.activity.Mine_data;
 import com.example.skyworthclub.serviceinnovation.Mine.activity.Mine_resume;
+import com.example.skyworthclub.serviceinnovation.Mine.activity.MyMessageActivity;
+import com.example.skyworthclub.serviceinnovation.Mine.activity.MySubscribeActivity;
 import com.example.skyworthclub.serviceinnovation.R;
 
 /**
@@ -27,6 +30,8 @@ public class Mine extends Fragment implements View.OnClickListener {
     ImageView info;
     ImageView setting;
     ImageView avatar;
+
+    private ImageView mCircleImg;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
@@ -42,12 +47,14 @@ public class Mine extends Fragment implements View.OnClickListener {
         resume=view.findViewById(R.id.mine_resume_button);
         info=view.findViewById(R.id.mine_info_button);
         avatar=view.findViewById(R.id.mine_avatar);
+        mCircleImg = view.findViewById(R.id.mine_avatar);
         setting.setOnClickListener(this);
         data.setOnClickListener(this);
         subscribe.setOnClickListener(this);
         resume.setOnClickListener(this);
         info.setOnClickListener(this);
         avatar.setOnClickListener(this);
+        mCircleImg.setOnClickListener(this);
     }
 
     @Override
@@ -71,16 +78,20 @@ public class Mine extends Fragment implements View.OnClickListener {
             }
             case R.id.mine_sub_button:{
                 Toast.makeText(v.getContext(), "subscribe", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(v.getContext(),Mine_add_sub.class);
+                Intent intent=new Intent(v.getContext(),MySubscribeActivity.class);
                 startActivity(intent);
                 break;
             }
             case R.id.mine_info_button:{
                 Toast.makeText(v.getContext(), "info", Toast.LENGTH_SHORT).show();
-//                Intent intent=new Intent(v.getContext(),Mine_data.class);
-//                startActivity(intent);
+                Intent intent=new Intent(v.getContext(),MyMessageActivity.class);
+                startActivity(intent);
                 break;
             }
+            case R.id.mine_avatar:
+                Intent intent=new Intent(v.getContext(),LoginActivity.class);
+                startActivity(intent);
+                break;
         }
 
     }
