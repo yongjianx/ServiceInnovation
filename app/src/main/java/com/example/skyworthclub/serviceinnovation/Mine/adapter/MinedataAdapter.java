@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -58,8 +59,11 @@ public class MinedataAdapter extends RecyclerView.Adapter<MinedataAdapter.ViewHo
             }
         }
         });
+
         return holder;
     }
+
+
     @Override
     public void onBindViewHolder(MinedataAdapter.ViewHolder holder, int position) {
        MineData mineData=mineDatas.get(position);
