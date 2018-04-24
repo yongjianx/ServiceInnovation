@@ -141,11 +141,12 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
 //                保存数据&跳转界面
                 Toast.makeText(this, "aa", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, "onClick: next");
-//                saveData(linearLayoutManager);
+                saveData(linearLayoutManager);
                 Intent intent=new Intent(v.getContext(),Mine_data_second.class);
                 startActivity(intent);
                 break;
             }
+            default:break;
         }
     }
     // 数据保存
@@ -154,16 +155,18 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
          SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
                 for (int position=0;position<=7;position++){
                     Toast.makeText(this, "mm", Toast.LENGTH_SHORT).show();
-                    Log.e(TAG, "saveData: in for function");
+                    Log.d(TAG, "saveData: in for function");
 //            获取recyclerview里面的itemview
                     View view=manager.findViewByPosition(position);
 //            获取itemview里面edittext的实例
                     RelativeLayout layout=(RelativeLayout)view;
                     EditText editText=layout.findViewById(R.id.mine_data_edittext);
-                    editor.clear().commit();
-                    editor.putString(mineData.get(position).getName(), editText.getText().toString());
-                    Log.e(TAG, "saveData: save");
-                    editor.apply();
+//                    editor.clear().commit();
+                    String value = editText.getText().toString();
+                    editor.putString(mineData.get(position).getName(), value);
+                    Log.d(TAG, "name:" + mineData.get(position).getName() + "value:" + value);
+//                    Log.e(TAG, "saveData: save");
+                    editor.commit();
                 }
             }
 

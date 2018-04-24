@@ -59,6 +59,7 @@
         android:layout_below="@id/mine_data_title_second"
         android:layout_marginTop="20dp"/>
     <RelativeLayout
+        android:id="@+id/interval_layout"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#FFFFFF"
@@ -115,4 +116,59 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"/>
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/download_file_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/interval_layout">
+        <View
+            android:id="@+id/second_spot"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_centerVertical="true"
+            android:background="#00D5DD"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="31dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已上传文件"
+            android:fontFamily="@font/noto_sans"
+            android:textColor="#121212"
+            android:textSize="16dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/second_spot"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加相关文件"
+            android:fontFamily="@font/noto_sans"
+            android:textColor="#121212"
+            android:textSize="14dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/add_file"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"/>
+        <ImageView
+            android:id="@+id/add_file"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/add_icon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/download_file_rv"
+        android:layout_below="@id/download_file_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>

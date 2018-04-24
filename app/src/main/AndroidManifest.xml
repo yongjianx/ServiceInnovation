@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.skyworthclub.serviceinnovation">
+
+          package="com.example.skyworthclub.serviceinnovation">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,26 +15,46 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Main.activity.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Mine.activity.Mine_data"
 
-        <activity android:name=".Mine.activity.Mine_data"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Mine.activity.Mine_resume"
+        <activity
+            android:name=".Mine.activity.Mine_resume"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Mine.activity.Mine_data_second"
+        <activity
+            android:name=".Mine.activity.Mine_data_second"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".Mine.activity.Mine_add_sub"
+        <activity
+            android:name=".Mine.activity.Mine_add_sub"
             android:windowSoftInputMode="stateHidden"/>
+
+
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts"/>
 
-        <activity android:name=".Homepage.activity.HomepageSearch"></activity>
+        <activity android:name=".Homepage.activity.HomepageSearch"/>
+        <activity android:name=".Mine.activity.MyMessageActivity">
+        </activity>
+        <activity android:name=".Mine.activity.MessageDialogActivity">
+        </activity>
+        <activity android:name=".Mine.activity.MySubscribeActivity">
+        </activity>
+        <activity android:name=".Mine.activity.LoginActivity">
+        </activity>
+        <activity android:name=".Mine.activity.RegisterActivity">
+        </activity>
+
+        <activity android:name=".Homepage.activity.SearchResult" />
+        <activity android:name=".Homepage.activity.ProjectDetail"></activity>
+
     </application>
 
 </manifest>

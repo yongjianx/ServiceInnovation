@@ -7,6 +7,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,7 +32,7 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
     private TextWatcher mTextWatcher;
     boolean show=true;
 
-    public RelativeLayoutAdapter(List<MyRelativeLayout>relativeLayouts,int status){
+    public RelativeLayoutAdapter(List<MyRelativeLayout>relativeLayouts, int status){
         mrelativeLayouts=relativeLayouts;
         this.status=status;
     }
@@ -127,6 +128,7 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
         };
        return holder;
     }
+
     @Override
     public void onBindViewHolder(RelativeLayoutAdapter.ViewHolder holder, int position) {
         MyRelativeLayout relativeLayout=mrelativeLayouts.get(position);
