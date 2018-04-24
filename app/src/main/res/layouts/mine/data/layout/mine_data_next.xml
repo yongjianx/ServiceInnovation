@@ -103,7 +103,7 @@
             android:fontFamily="@font/noto_sans"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="68dp"
+            android:layout_marginRight="72dp"
             />
         <EditText
             android:id="@+id/second_intervals"
@@ -114,7 +114,7 @@
             android:maxLength="5"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="18dp"/>
+            android:layout_marginRight="16dp"/>
     </RelativeLayout>
 
     <RelativeLayout

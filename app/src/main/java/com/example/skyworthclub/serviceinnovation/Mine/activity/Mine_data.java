@@ -173,7 +173,7 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
     private void openAlbum() {
         Intent intent=new Intent("android.intent.action.GET_CONTENT");
         intent.setType("image/*");
-        Log.e(TAG, "openAlbum: error" );
+        Log.e(TAG, "openAlbum: in" );
         startActivityForResult(intent,CHOOSE_PHOTO);
     }
     @Override
@@ -198,6 +198,7 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
                     if (Build.VERSION.SDK_INT>=19){
                         handleImageOnKitKat(data);
                     }else {
+                        Log.e(TAG, "onActivityResult: version<19" );
                         handleImageBeforeKitKat(data);
                     }
                 }
@@ -215,29 +216,33 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
     }
     @TargetApi(19)
     private void handleImageOnKitKat(Intent data) {
-        Log.e(TAG, "handleImageOnKitKat: a");
+        Log.e(TAG, "handleImageOnKitKat: in");
             String imagepath=null;
             Uri uri=data.getData();
-            if (DocumentsContract.isDocumentUri(this,uri)){
-                String docID=DocumentsContract.getDocumentId(uri);
-                if ("com.android.providers.media.documents".equals(uri.getAuthority())){
-                    String id=docID.split(":")[1];
-                    String selection=MediaStore.Images.Media._ID+"="+id;
-                    imagepath=getImagepath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,selection);
-                }else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())){
-                    Uri contenturi= ContentUris.withAppendedId(Uri.parse("content://download/public_downloads"),Long.valueOf(docID));
-                    imagepath=getImagepath(contenturi,null);
-                }else  if ("content".equalsIgnoreCase(uri.getScheme())){
+        Log.e(TAG, "handleImageOnKitKat: uri"+uri );
+            if (DocumentsContract.isDocumentUri(this,uri)) {
+                String docID = DocumentsContract.getDocumentId(uri);
+                Log.e(TAG, "document");
+                if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
+                    String id = docID.split(":")[1];
+                    String selection = MediaStore.Images.Media._ID + "=" + id;
+                    imagepath = getImagepath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, selection);
+                } else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
+                    Uri contenturi = ContentUris.withAppendedId(Uri.parse("content://download/public_downloads"), Long.valueOf(docID));
+                    imagepath = getImagepath(contenturi, null);
+                }
+            }else  if ("content".equalsIgnoreCase(uri.getScheme())){
+                    Log.e(TAG, "content");
                     imagepath=getImagepath(uri,null);
                 }else if ("file".equalsIgnoreCase(uri.getScheme())){
+                    Log.e(TAG, "file " );
                     imagepath=uri.getPath();
                 }
                 displayImage(imagepath);
             }
-    }
 
     private void displayImage(String imagePath) {
-        Log.e(TAG, "displayImage: display" );
+        Log.e(TAG, "displayImage: imagepath"+imagePath );
         if (imagePath!=null){
             Toast.makeText(this, "change", Toast.LENGTH_SHORT).show();
             Bitmap bitmap= BitmapFactory.decodeFile(imagePath);

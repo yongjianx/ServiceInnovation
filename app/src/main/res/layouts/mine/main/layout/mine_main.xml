@@ -38,7 +38,9 @@
         android:layout_height="48dp"
         android:background="#FFFFFF"
         android:layout_below="@id/mine_part1"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:onClick="onClick"
+        android:clickable="true">
         <ImageView
             android:id="@+id/mine_pic1"
             android:layout_width="wrap_content"
@@ -65,7 +67,9 @@
         android:layout_height="48dp"
         android:background="#FFFFFF"
         android:layout_below="@id/mine_part2"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:onClick="onClick"
+        android:clickable="true">
         <ImageView
             android:id="@+id/mine_pic2"
             android:layout_width="wrap_content"
@@ -92,7 +96,9 @@
         android:layout_height="48dp"
         android:background="#FFFFFF"
         android:layout_below="@id/mine_part3"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:onClick="onClick"
+        android:clickable="true">
         <ImageView
             android:id="@+id/mine_pic3"
             android:layout_width="wrap_content"
@@ -119,7 +125,9 @@
         android:layout_height="48dp"
         android:background="#FFFFFF"
         android:layout_below="@id/mine_part4"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:onClick="onClick"
+        android:clickable="true">
         <ImageView
             android:id="@+id/mine_pic4"
             android:layout_width="wrap_content"
