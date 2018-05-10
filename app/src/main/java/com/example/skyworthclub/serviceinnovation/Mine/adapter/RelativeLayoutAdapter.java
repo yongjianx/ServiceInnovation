@@ -1,11 +1,14 @@
 package com.example.skyworthclub.serviceinnovation.Mine.adapter;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -45,7 +48,7 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
                 return false;
             }
         });
-           mTextWatcher=new TextWatcher() {
+        mTextWatcher=new TextWatcher() {
             private CharSequence temp;
             private int editstar;
             private int editend;
@@ -108,10 +111,16 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
         TextView mbottom_tv;
         public ViewHolder(View itemView) {
             super(itemView);
-           mview=itemView.findViewById(R.id.mine_resume_spot);
-           mtextView=itemView.findViewById(R.id.mine_resume_textview);
+            mview=itemView.findViewById(R.id.mine_resume_spot);
+            mtextView=itemView.findViewById(R.id.mine_resume_textview);
             meditText=itemView.findViewById(R.id.mine_resume_et);
             mbottom_tv=itemView.findViewById(R.id.mine_resume_number);
+            projectDetail();
+        }
+
+        private void projectDetail(){
+
+            mtextView.setBackgroundColor(Color.WHITE);
         }
     }
 }
