@@ -40,8 +40,5 @@
         android:hint="请输入"
         android:fontFamily="@font/noto_sans"/>
 </RelativeLayout>
-    <!--<Space-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="10dp"-->
-        <!--android:background="#EEEEEE"/>-->
+
 </RelativeLayout>

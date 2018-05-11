@@ -6,6 +6,7 @@
 
     <!--xyj-->
     <color name="colorGray">#F0F0F0</color>
+    <color name="colorFFEEEEEE">#FFEEEEEE</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray2">#9e9e9e</color>
