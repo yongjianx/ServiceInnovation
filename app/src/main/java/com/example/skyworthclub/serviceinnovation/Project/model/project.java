@@ -8,10 +8,10 @@ package com.example.skyworthclub.serviceinnovation.Project.model;
 
 public class project {
     public String projectName;
-    public String projectStatus;
+    public boolean projectStatus;
     public project(){
         projectName=null;
-        projectStatus=null;
+        projectStatus=false;
     }
     public project(String projectName) {
         this.projectName = projectName;
@@ -20,7 +20,7 @@ public class project {
         this.projectName = projectName;
     }
 
-    public void setProjectStatus(String projectStatus) {
+    public void setProjectStatus(boolean projectStatus) {
         this.projectStatus = projectStatus;
     }
 
@@ -28,7 +28,7 @@ public class project {
         return projectName;
 
     }
-    public String getProjectStatus() {
+    public boolean getProjectStatus() {
         return projectStatus;
     }
 
