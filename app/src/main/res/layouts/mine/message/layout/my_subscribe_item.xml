@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/my_message_layout"
+                android:layout_width="match_parent"
+                android:layout_height="118dp"
+                android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/unsubscribe_img"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/delete_conversation"/>
+    
+    <TextView
+        android:id="@+id/subscribe_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_toRightOf="@id/unsubscribe_img"
+        android:layout_above="@id/divider_img"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="订阅1"
+        android:textColor="#121212"
+        android:textSize="14sp"/>
+
+    <Switch
+        android:id="@+id/subscribe_tgbtn"
+        android:layout_width="51dp"
+        android:layout_height="34dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:theme="@style/MySwitch"/>
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="12dp"
+        android:layout_toLeftOf="@id/subscribe_tgbtn"
+        android:layout_marginTop="19dp"
+        android:text="在首页显示"
+        android:textColor="#9E9E9E"
+        android:textSize="10sp"/>
+
+    <ImageView
+        android:id="@+id/divider_img"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/unsubscribe_img"
+        android:src="#EEEEEE"/>
+
+    <TextView
+        android:layout_width="55dp"
+        android:layout_height="13dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/divider_img"
+        android:gravity="center"
+        android:text="项目类型"
+        android:textColor="#9E9E9E"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/subscribe_project_type_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center"
+        android:text="教育咨询"
+        android:textColor="#121212"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:layout_width="27dp"
+        android:layout_height="13dp"
+        android:layout_marginTop="14dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/divider_img"
+        android:gravity="center"
+        android:text="地点"
+        android:textColor="#9E9E9E"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/subscribe_address_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center"
+        android:text="广州"
+        android:textColor="#121212"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:layout_width="27dp"
+        android:layout_height="13dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="46dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/divider_img"
+        android:gravity="center"
+        android:text="薪酬"
+        android:textColor="#9E9E9E"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/subscribe_wages_tv"
+        android:layout_width="96dp"
+        android:layout_height="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="11dp"
+        android:gravity="center"
+        android:text="¥ 1500~2000"
+        android:textColor="#121212"
+        android:textSize="10sp"/>
+
+</RelativeLayout>
