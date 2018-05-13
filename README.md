@@ -21,7 +21,37 @@
   2、命名：同图片资源命名，前缀统一加上模块名。\
   3、控件命名：同图片资源命名，前缀统一加上模块名。如mine_message,mine_data.\
   \
-注：\
-  1、字体统一用：android:fontFamily="@font/noto_sans"\
+  ###################################################################\
+  SharedPreferences:\
+  1、获取SharedPrefences对象api:public SharedPreferencesUtil(Context context)\
+    例：sharedPreferencesUtil = new SharedPreferencesUtil(HomepageSearch.this);\
+  2、存储对象：\
+    /*\
+    putObject 存储对象\
+    @params object 要存储的对象\
+    @params key 对象的键值\
+     */\
+    public boolean putObject(Object object, String key)\
+    获取对象：public Object getObject(String key)\
+  3、存储图片资源：\
+  /*\
+    putBitmap 存储图片\
+    @params bitmap 要存储的图片对象\
+    @params key 图片对象的key值\
+    @return true保存成功，false失败\
+     */\
+    public boolean putBitmap(Bitmap bitmap, String key)\
+    获取：public Bitmap getBitmap(String key)\
+  其它详见SharedPreferences类\
   \
-  未完待续...
+  如何查看保存的数据：\
+    使用adb工具:\
+      adb shell  打开终端（注意：此时要一直运行应用）\
+      run-as <包名>(如com.example.skyworthclub.serviceinnovation是我的包名)\
+      ls 查看当前目录下所有文件以及文件夹\
+      cd shared_prefs 进入到此目录下\
+      cat com.example.skyworthclub.serviceinnovation_preferences.xml 查看该文件内容,即你保存的数据\
+      ps:adb工具很常用，建议配全局变量\
+     \
+  LimitQueue为队列类（有需要可使用）：\
+  @params limit为队列的固定长度\

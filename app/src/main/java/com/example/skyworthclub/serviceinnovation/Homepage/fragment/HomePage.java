@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.skyworthclub.serviceinnovation.Homepage.activity.HomepageSearch;
+import com.example.skyworthclub.serviceinnovation.Homepage.activity.ProjectDetail;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.GlideImageLoader;
+import com.example.skyworthclub.serviceinnovation.Homepage.utils.SharedPreferencesUtil;
 import com.example.skyworthclub.serviceinnovation.R;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalItemAdapter;
@@ -34,6 +37,7 @@ import java.util.List;
  */
 
 public class HomePage extends Fragment {
+    private final static String TAG = "HomePage";
     //轮播图片，耗时任务，异步任务
     private List<Integer> bannerImages = new ArrayList<>();
     private Banner banner;
@@ -74,7 +78,7 @@ public class HomePage extends Fragment {
         datas.add("教育咨询");
         datas.add("外语外贸");
 
-        for (int i=0; i<6; i++){
+        for (int i=0; i<9; i++){
             //listView
             projectHashMap.clear();
             projectHashMap.put("projectName", "创维俱乐部");
@@ -117,7 +121,10 @@ public class HomePage extends Fragment {
         VerticalItemAdapter.setOnItemClickListener(new VerticalItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(getContext(), "你点击了projectListView" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "你点击了projectListView" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), ProjectDetail.class);
+                startActivity(intent);
+
             }
         });
         projectListView.setAdapter(VerticalItemAdapter);
@@ -126,7 +133,20 @@ public class HomePage extends Fragment {
         return view;
     }
 
-//    @Override
+    @Override
+    public void onStart() {
+        super.onStart();
+        banner.startAutoPlay();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause");
+        banner.stopAutoPlay();
+    }
+
+    //    @Override
 //    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //        Log.e("TAG", "onItemClick: " + position);
 //        Toast.makeText(getContext(), "你点击的是listView "+ position, Toast.LENGTH_SHORT).show();

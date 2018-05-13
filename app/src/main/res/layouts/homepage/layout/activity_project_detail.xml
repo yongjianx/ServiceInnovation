@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.skyworthclub.serviceinnovation.Homepage.activity.ProjectDetail">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/project_detail"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/colorF7F7F7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:text="@string/toolBarTitleText"/>
+        <ImageView
+            android:id="@+id/homepage_project_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:src="@drawable/homepage_project_back"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <include layout="@layout/detail_project">
+    </include>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
