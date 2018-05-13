@@ -21,7 +21,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Homepage.activity.HomepageSearch"></activity>
+        <activity
+            android:name=".Project.activity.projectDetailActivity"
+            android:label="@string/title_activity_project_detail"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

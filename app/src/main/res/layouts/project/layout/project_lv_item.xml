@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="5dp"
+    android:minHeight="64dp"
+    android:background="@color/colorWhite"
+    android:layout_height="64dp">
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginLeft="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="项目名称: "
+        android:textColor="#121212"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/projectName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="xxxxx"
+        android:textColor="#121212" />
+    <TextView
+        android:layout_marginLeft="95dp"
+        android:layout_gravity="center"
+        android:id="@+id/projectStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="完成状态"
+        android:textColor="#121212" />
+
+</LinearLayout>
