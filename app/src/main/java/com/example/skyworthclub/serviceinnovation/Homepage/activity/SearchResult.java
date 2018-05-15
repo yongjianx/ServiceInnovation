@@ -1,5 +1,6 @@
 package com.example.skyworthclub.serviceinnovation.Homepage.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,9 @@ public class SearchResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
         init();
+        //获取从上一个activity传过来的搜索内容
+        Intent intent = getIntent();
+        editText.setText(intent.getStringExtra("searchContent"));
 
         //测试用
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.homepage_android);
