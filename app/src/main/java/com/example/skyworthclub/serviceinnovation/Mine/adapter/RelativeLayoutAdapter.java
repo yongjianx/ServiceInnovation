@@ -47,11 +47,17 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
     View viewitem;
     SharedPreferencesUtil sharedPreferencesUtil;
 
+<<<<<<< HEAD
     public RelativeLayoutAdapter(List<MyRelativeLayout> relativeLayouts, int status, RecyclerView recyclerView) {
         mrelativeLayouts = relativeLayouts;
         mrecyclerView = recyclerView;
         this.status = status;
         sharedPreferencesUtil = new SharedPreferencesUtil(mrecyclerView.getContext());
+=======
+    public RelativeLayoutAdapter(List<MyRelativeLayout>relativeLayouts, int status){
+        mrelativeLayouts=relativeLayouts;
+        this.status=status;
+>>>>>>> 6d214970f5669cd3217e88a588a0c909fe1ed7af
     }
 
 

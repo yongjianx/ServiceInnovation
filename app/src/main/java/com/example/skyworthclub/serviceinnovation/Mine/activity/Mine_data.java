@@ -158,6 +158,7 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
             }
             case R.id.mine_data_title_next: {
 //                保存数据&跳转界面
+<<<<<<< HEAD
 
                 try {
                     saveData(linearLayoutManager);
@@ -177,17 +178,36 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
             }
             default:
                 break;
+=======
+                Toast.makeText(this, "aa", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "onClick: next");
+                saveData(linearLayoutManager);
+                Intent intent=new Intent(v.getContext(),Mine_data_second.class);
+                startActivity(intent);
+                break;
+            }
+            default:break;
+>>>>>>> 6d214970f5669cd3217e88a588a0c909fe1ed7af
         }
     }
 
     // 数据保存
     public void saveData(LinearLayoutManager manager) {
+<<<<<<< HEAD
         Toast.makeText(this, "click next", Toast.LENGTH_SHORT).show();
         Log.e("test", "saveData: in for function");
         for (int position = 0; position <= 7; position++) {
+=======
+        Log.e(TAG, "saveData: in savedata");
+         SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
+                for (int position=0;position<=7;position++){
+                    Toast.makeText(this, "mm", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "saveData: in for function");
+>>>>>>> 6d214970f5669cd3217e88a588a0c909fe1ed7af
 //            获取recyclerview里面的itemview
             View view = manager.findViewByPosition(position);
 //            获取itemview里面edittext的实例
+<<<<<<< HEAD
             RelativeLayout layout = (RelativeLayout) view;
             EditText editText = layout.findViewById(R.id.mine_data_edittext);
 //                    editor.clear().commit();
@@ -197,6 +217,18 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         }
         Toast.makeText(this, "savadata!!!", Toast.LENGTH_SHORT).show();
     }
+=======
+                    RelativeLayout layout=(RelativeLayout)view;
+                    EditText editText=layout.findViewById(R.id.mine_data_edittext);
+//                    editor.clear().commit();
+                    String value = editText.getText().toString();
+                    editor.putString(mineData.get(position).getName(), value);
+                    Log.d(TAG, "name:" + mineData.get(position).getName() + "value:" + value);
+//                    Log.e(TAG, "saveData: save");
+                    editor.commit();
+                }
+            }
+>>>>>>> 6d214970f5669cd3217e88a588a0c909fe1ed7af
 
     private void openAlbum() {
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
