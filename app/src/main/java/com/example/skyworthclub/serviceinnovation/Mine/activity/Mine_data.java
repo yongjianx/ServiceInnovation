@@ -27,6 +27,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -69,6 +70,10 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         next.setOnClickListener(this);
         back.setOnClickListener(this);
         circleimage.setOnClickListener(this);
+//        避免光标出现，让edittext失去焦点
+        circleimage.setFocusable(true);
+        circleimage.setFocusableInTouchMode(true);
+        circleimage.requestFocus();
         sharedPreferencesUtil = new SharedPreferencesUtil(getBaseContext());
         initView();
         RecyclerView recyclerView = findViewById(R.id.mine_data_recyclerview);
@@ -80,14 +85,14 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
 
     private void initView() {
 //        从文件中读取数据
-        String mname=null;
-        String mgender=null;
-        String mnickname=null;
-        String mresidence=null;
-        String mschool=null;
-        String mprofession=null;
-        String mphone=null;
-        String mmail=null;
+        String mname = null;
+        String mgender = null;
+        String mnickname = null;
+        String mresidence = null;
+        String mschool = null;
+        String mprofession = null;
+        String mphone = null;
+        String mmail = null;
 
         if (sharedPreferencesUtil.getString("姓名") != null) {
             mname = sharedPreferencesUtil.getString("姓名");
@@ -153,11 +158,21 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
             }
             case R.id.mine_data_title_next: {
 //                保存数据&跳转界面
-                Toast.makeText(this, "aa", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onClick: next");
-                saveData(linearLayoutManager);
-                Intent intent = new Intent(v.getContext(), Mine_data_second.class);
-                startActivity(intent);
+
+                try {
+                    saveData(linearLayoutManager);
+                    Toast.makeText(this, "aa", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "onClick: next");
+                    Intent intent = new Intent(v.getContext(), Mine_data_second.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e("test", "savadata: error ");
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(
+                            InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                    e.printStackTrace();
+                }
+
                 break;
             }
             default:
@@ -167,10 +182,9 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
 
     // 数据保存
     public void saveData(LinearLayoutManager manager) {
-        Log.e(TAG, "saveData: in savedata");
+        Toast.makeText(this, "click next", Toast.LENGTH_SHORT).show();
+        Log.e("test", "saveData: in for function");
         for (int position = 0; position <= 7; position++) {
-            Toast.makeText(this, "mm", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, "saveData: in for function");
 //            获取recyclerview里面的itemview
             View view = manager.findViewByPosition(position);
 //            获取itemview里面edittext的实例
@@ -178,11 +192,10 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
             EditText editText = layout.findViewById(R.id.mine_data_edittext);
 //                    editor.clear().commit();
             String value = editText.getText().toString();
-            sharedPreferencesUtil.putString( mineData.get(position).getName(),value);
-            Log.d(TAG, "name:" + mineData.get(position).getName() + "value:" + value);
-//                    Log.e(TAG, "saveData: save");
-
+            sharedPreferencesUtil.putString(mineData.get(position).getName(), value);
+            Log.e("test", "name:" + mineData.get(position).getName() + "value:" + value);
         }
+        Toast.makeText(this, "savadata!!!", Toast.LENGTH_SHORT).show();
     }
 
     private void openAlbum() {
@@ -267,7 +280,7 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
             Toast.makeText(this, "change", Toast.LENGTH_SHORT).show();
             Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
 //            保存你图片
-            sharedPreferencesUtil.putBitmap(bitmap,"avatar");
+            sharedPreferencesUtil.putBitmap(bitmap, "avatar");
             circleimage.setImageBitmap(bitmap);
         } else {
             Toast.makeText(this, "failed to get image", Toast.LENGTH_SHORT).show();

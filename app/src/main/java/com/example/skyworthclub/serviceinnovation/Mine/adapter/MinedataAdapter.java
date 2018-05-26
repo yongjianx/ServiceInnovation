@@ -88,6 +88,13 @@ public class MinedataAdapter extends RecyclerView.Adapter<MinedataAdapter.ViewHo
            editTexts=itemView.findViewById(R.id.mine_data_edittext);
            textView=itemView.findViewById(R.id.mine_data_moudle);
            views=itemView.findViewById(R.id.mine_data_view);
+           editTexts.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   v.setFocusable(true);
+                   Log.e("pintln", " v:"+v);
+               }
+           });
         }
     }
 }
