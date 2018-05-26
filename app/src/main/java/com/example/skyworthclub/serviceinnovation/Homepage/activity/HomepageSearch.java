@@ -80,6 +80,9 @@ public class HomepageSearch extends AppCompatActivity {
                 s = s.replace(" ", "");
                 if (!s.equals(""))
                     searchList.add(s);
+                Intent intent = new Intent(HomepageSearch.this, SearchResult.class);
+                intent.putExtra("searchContent", s);
+                startActivity(intent);
             }
         });
         clearHistory.setOnClickListener(new View.OnClickListener() {

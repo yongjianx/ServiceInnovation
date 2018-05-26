@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.skyworthclub.serviceinnovation.Homepage.activity.HomepageSearch;
+import com.example.skyworthclub.serviceinnovation.Homepage.activity.ProjectDetail;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.GlideImageLoader;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.SharedPreferencesUtil;
@@ -120,7 +121,10 @@ public class HomePage extends Fragment {
         VerticalItemAdapter.setOnItemClickListener(new VerticalItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(getContext(), "你点击了projectListView" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "你点击了projectListView" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), ProjectDetail.class);
+                startActivity(intent);
+
             }
         });
         projectListView.setAdapter(VerticalItemAdapter);

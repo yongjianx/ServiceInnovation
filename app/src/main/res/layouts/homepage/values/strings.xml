@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toolBarTitleText">项目详情</string>
+    
+    <string name="detail_project_name">项目名称</string>
+    <string name="detail_company_name">公司名称</string>
+    <string name="detail_project_cycle">周期：30天</string>
+</resources>
