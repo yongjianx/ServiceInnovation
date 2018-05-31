@@ -87,24 +87,23 @@ public class Mine_resume extends AppCompatActivity {
             public void onClick(View v) {
                 if (edit_status == 0) {
 //                    可编辑状态
-
                     try {
                         edit_status = 1;
                         textView.setText("保存");
                         saveData(linearLayoutManager);
                     } catch (Exception e) {
                         Log.e("test", "not savedata");
-                        Log.e("test2", "edit_status: "+edit_status );
+                        Log.e("test2", "edit_status: " + edit_status);
                         e.printStackTrace();
                     }
-                    Log.e("test2", "edit_status: "+edit_status);
+                    Log.e("test2", "edit_status: " + edit_status);
                     Toast.makeText(Mine_resume.this, "baocun", Toast.LENGTH_SHORT).show();
                     //设置editview为可编辑状态
                 } else {
                     try {
                         edit_status = 0;
                         saveData(linearLayoutManager);
-                        Log.e("test2", "edit_status: "+edit_status);
+                        Log.e("test2", "edit_status: " + edit_status);
                         Toast.makeText(Mine_resume.this, "bianji", Toast.LENGTH_SHORT).show();
                         textView.setText("编辑");
                     } catch (Exception e) {
@@ -117,7 +116,7 @@ public class Mine_resume extends AppCompatActivity {
         });
     }
 
-    //保存数据
+    //保存数据&判断是否需要隐藏键盘
     private void saveData(LinearLayoutManager linearLayoutManager) {
         for (int position = 0; position <= 2; position++) {
             //            获取recyclerview里面的itemview
@@ -125,17 +124,17 @@ public class Mine_resume extends AppCompatActivity {
 //            获取itemview里面edittext的实例
             RelativeLayout layout = (RelativeLayout) view;
             EditText editText = layout.findViewById(R.id.mine_resume_et);
-            Log.e("test", "edit_status : "+edit_status);
+            Log.e("test", "edit_status : " + edit_status);
             if (edit_status == 0) {
                 String value = editText.getText().toString();
                 sharedPreferencesUtil.putString(relativeLayouts.get(position).getName(), value);
                 Log.e("test", "saveData: close input" + relativeLayouts.get(position).getName() + value);
                 editText.setInputType(InputType.TYPE_NULL);
+                Toast.makeText(this, "saveData", Toast.LENGTH_SHORT).show();
             } else {
                 Log.e("test", "saveData:open input ");
-                editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE|InputType.TYPE_CLASS_TEXT);
+                editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_CLASS_TEXT);
             }
-            Toast.makeText(this, "saveData", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -150,7 +149,6 @@ public class Mine_resume extends AppCompatActivity {
             edittext2 = sharedPreferencesUtil.getString("相关项目经验");
             edittext3 = sharedPreferencesUtil.getString("自我评价");
         }
-
         MyRelativeLayout relativeLayout1 = new MyRelativeLayout("#4FC3F7", "教育背景", "0/100", edittext1);
         MyRelativeLayout relativeLayout2 = new MyRelativeLayout("#FFEE58", "相关项目经验", "0/200", edittext2);
         MyRelativeLayout relativeLayout3 = new MyRelativeLayout("#FF6C72", "自我评价", "0/100", edittext3);
@@ -158,7 +156,6 @@ public class Mine_resume extends AppCompatActivity {
         relativeLayouts.add(relativeLayout2);
         relativeLayouts.add(relativeLayout3);
     }
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         // 获得当前得到焦点的View，一般情况下就是EditText（特殊情况就是轨迹求或者实体案件会移动焦点）
