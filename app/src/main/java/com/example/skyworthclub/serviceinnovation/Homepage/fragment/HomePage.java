@@ -13,16 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.skyworthclub.serviceinnovation.Homepage.activity.HomepageSearch;
 import com.example.skyworthclub.serviceinnovation.Homepage.activity.ProjectDetail;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.GlideImageLoader;
-import com.example.skyworthclub.serviceinnovation.Homepage.utils.SharedPreferencesUtil;
 import com.example.skyworthclub.serviceinnovation.R;
-import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalAdapter2;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;

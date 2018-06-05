@@ -1,103 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="92dp"
-    android:background="@color/colorWhite">
-
-    <ImageView
-        android:id="@+id/xyj_pic"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginLeft="16dp"
-        android:layout_centerVertical="true"/>
-
-    <LinearLayout
-        android:id="@+id/linearlayout1"
-        android:layout_toRightOf="@id/xyj_pic"
-        android:layout_marginLeft="16dp"
+    android:layout_height="96dp"
+    android:orientation="vertical">
+    
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="14dp">
-
-        <TextView
-            android:id="@+id/xyj_projectName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/colorBlack2"
-            android:fontFamily="@font/noto_sans"
-            android:gravity="top"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/xyj_releaseTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:fontFamily="@font/noto_sans"
-            android:textSize="12sp"
-            android:textColor="@color/colorGray2"
-            android:gravity="right"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearlayout2"
-        android:layout_toRightOf="@id/xyj_pic"
-        android:layout_below="@id/linearlayout1"
-        android:layout_marginLeft="16dp"
+        android:layout_height="4dp" />
+    
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:orientation="horizontal"
-        android:gravity="bottom">
+        android:layout_height="92dp"
+        android:background="@color/colorWhite">
 
-        <TextView
-            android:id="@+id/xyj_companyName"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/xyj_pic"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"/>
+
+        <LinearLayout
+            android:id="@+id/linearlayout1"
+            android:layout_toRightOf="@id/xyj_pic"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/noto_sans"
-            android:textSize="14sp"
-            android:textColor="@color/colorGray2"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:paddingTop="14dp">
 
-    <LinearLayout
-        android:layout_toRightOf="@id/xyj_pic"
-        android:layout_below="@id/linearlayout2"
-        android:layout_marginLeft="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"
-        android:gravity="bottom">
+            <TextView
+                android:id="@+id/xyj_projectName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack2"
+                android:fontFamily="@font/noto_sans"
+                android:gravity="top"
+                android:layout_weight="1"/>
 
-        <TextView
-            android:id="@+id/xyj_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="noto_sans"
-            android:textColor="@color/colorGray2"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/xyj_releaseTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:fontFamily="@font/noto_sans"
+                android:textSize="12sp"
+                android:textColor="@color/colorGray2"
+                android:gravity="right"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/xyj_cycleTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/noto_sans"
-            android:textSize="14sp"
-            android:textColor="@color/colorGray2"
-            android:layout_weight="1"/>
+        <LinearLayout
+            android:id="@+id/linearlayout2"
+            android:layout_toRightOf="@id/xyj_pic"
+            android:layout_below="@id/linearlayout1"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:gravity="bottom">
 
-        <TextView
-            android:id="@+id/xyj_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:textSize="14sp"
-            android:textColor="@color/colorBlue"
-            android:gravity="right"
-            android:layout_weight="1"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/xyj_companyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
+                android:textSize="14sp"
+                android:textColor="@color/colorGray2"/>
+        </LinearLayout>
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_toRightOf="@id/xyj_pic"
+            android:layout_below="@id/linearlayout2"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:gravity="bottom">
+
+            <TextView
+                android:id="@+id/xyj_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="noto_sans"
+                android:textColor="@color/colorGray2"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/xyj_cycleTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
+                android:textSize="14sp"
+                android:textColor="@color/colorGray2"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/xyj_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorBlue"
+                android:gravity="right"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    
+
+</LinearLayout>
