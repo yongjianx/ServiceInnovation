@@ -1,5 +1,7 @@
 package com.example.skyworthclub.serviceinnovation.Project.adapter;
 
+import android.app.Activity;
+import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import com.example.skyworthclub.serviceinnovation.Project.model.project;
+import android.widget.Toast;
 import com.example.skyworthclub.serviceinnovation.R;
+import com.example.skyworthclub.serviceinnovation.Project.model.project;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.widget.Toast.makeText;
 
 /**
  * Created by Awei on 2018/3/22.
@@ -21,7 +25,12 @@ import java.util.List;
 public class myProjectlvAdapter extends BaseAdapter {
     public List<project> projects =new ArrayList<>();
     public LayoutInflater inflater;
-    public myProjectlvAdapter(List<project> projects,LayoutInflater inflater){
+    @Override
+    public void unregisterDataSetObserver(DataSetObserver observer) {
+        super.unregisterDataSetObserver(observer);
+    }
+
+    public myProjectlvAdapter(List<project> projects, LayoutInflater inflater){
         this.inflater = inflater;
         this.projects = projects;
     }
@@ -45,8 +54,9 @@ public class myProjectlvAdapter extends BaseAdapter {
         View item = inflater.inflate(R.layout.project_lv_item, null);
         project pj = projects.get(i);
         boolean ifFinish = pj.getProjectStatus();
-        TextView projectName = item.findViewById(R.id.projectName);
+        final TextView projectName = item.findViewById(R.id.projectName);
         TextView projectStatus = item.findViewById(R.id.projectStatus);
+
         projectName.setText(pj.getProjectName());
         if(ifFinish){
             projectStatus.setText("已完成");
