@@ -4,6 +4,7 @@
           package="com.example.skyworthclub.serviceinnovation">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 
     <application
@@ -50,6 +51,8 @@
         <activity android:name=".Mine.activity.LoginActivity">
         </activity>
         <activity android:name=".Mine.activity.RegisterActivity">
+        </activity>
+        <activity android:name=".Project.activity.projectDetailActivity">
         </activity>
 
         <activity android:name=".Homepage.activity.SearchResult" />

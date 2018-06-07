@@ -18,8 +18,18 @@ import com.example.skyworthclub.serviceinnovation.Project.adapter.myProjectlvAda
 import com.example.skyworthclub.serviceinnovation.Project.model.project;
 import com.example.skyworthclub.serviceinnovation.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by skyworthclub on 2018/1/21.
@@ -31,18 +41,24 @@ public class Project extends Fragment {
     public project pjTest1,pjTest2;
     public boolean ifLogin=false;
     public ListView projectsLv;
+    public static boolean judge = true;
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        pjTest1 = new project();
-        pjTest2 = new project();
-        pjTest1.setProjectName("创维俱乐部web开发");
-        pjTest1.setProjectStatus(true);
-        pjTest2.setProjectName("创维俱乐部APP开发");
-        pjTest2.setProjectStatus(false);
-        projects.add(pjTest1);
-        projects.add(pjTest2);
+        if(judge==true) {
+            pjTest1 = new project();
+            pjTest2 = new project();
+            pjTest1.setProjectName("创维俱乐部web开发");
+            pjTest1.setProjectStatus(true);
+            pjTest2.setProjectName("创维俱乐部APP开发");
+            pjTest2.setProjectStatus(false);
+            projects.add(pjTest1);
+            projects.add(pjTest2);
+            judge = false;
+        }
+        //能提交后台请求后
         if(!ifLogin){
+            // getResponse(url);
             View view = inflater.inflate(R.layout.project_main, container, false);
             projectsLv = view.findViewById(R.id.project_lv);
             myProjectlvAdapter adapter =new myProjectlvAdapter(projects,inflater);
@@ -52,6 +68,7 @@ public class Project extends Fragment {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Toast.makeText(getActivity(),"已点击",Toast.LENGTH_SHORT).show();
                     Intent pjDetail = new Intent(getActivity(),projectDetailActivity.class);
+                    pjDetail.putExtra("id",projects.get(i).getProId());
                     startActivity(pjDetail);
                 }
             });
@@ -78,4 +95,40 @@ public class Project extends Fragment {
         }
 
     }
+    //从后台拿到数据
+    public void getResponse(String url){
+        OkHttpClient okHttpClient = new OkHttpClient();
+        final Request request = new Request.Builder().get().url(url).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String jsonData = response.body().string();
+                project projectI = new project();
+                //解析json数据
+                try{
+                    JSONArray jsonArray = new JSONArray(jsonData);
+                    for(int i= 0;i<jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        projectI.setProjectName(jsonObject.getString("proName"));
+                        projectI.setProId(jsonObject.getInt("proId"));
+                        if(jsonObject.getString("proState") == "true"){
+                            projectI.setProjectStatus(true);
+                        }else{
+                            projectI.setProjectStatus(false);
+                        }
+                        projects.add(projectI);
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 }
