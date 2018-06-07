@@ -19,10 +19,6 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true">
 
-        <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="1dp"-->
-            <!--android:background="@color/colorGray"/>-->
 
        <android.support.design.widget.TabLayout
            android:id="@+id/xyj_tabLayout"
@@ -30,7 +26,8 @@
            android:layout_height="wrap_content"
            app:tabMode="fixed"
            app:tabGravity="fill"
-           app:tabIndicatorHeight="0dp">
+           app:tabIndicatorHeight="0dp"
+           android:background="@color/colorWhite">
 
        </android.support.design.widget.TabLayout>
 

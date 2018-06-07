@@ -1,115 +1,142 @@
 package com.example.skyworthclub.serviceinnovation.Homepage.activity;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalItemAdapter;
+import com.example.skyworthclub.serviceinnovation.Homepage.utils.LimitQueue;
+import com.example.skyworthclub.serviceinnovation.Homepage.utils.SharedPreferencesUtil;
 import com.example.skyworthclub.serviceinnovation.Homepage.view.SearchView;
 import com.example.skyworthclub.serviceinnovation.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class HomepageSearch extends AppCompatActivity {
     private final String TAG = "HomepageSearch";
+    //队列固定长度
+    private final static int limit = 5;
+    //两条搜索记录之间的横向间距
+    private final static int horizontalSpace = 40;
+    //两条搜索记录之间的纵向间距
+    private final static int verticalSpace = 30;
+    //搜索记录的总数
+    private int queueSize = 0;
 
-    private LinearLayout homepageSearch;
+    private ImageView back;
     private EditText editTextSearch;
-    private TextView homepageBack;
-    private View homepageHistory;
-
+    private TextView search;
     private SearchView searchView;
     private TextView clearHistory;
+    private SearchView hotSearch;
 
-    private VerticalItemAdapter verticalItemAdapter;
-    //存放listView数据,耗时任务
-    private Bitmap bitmap;
-    private List<Bitmap> projectBitmap = new ArrayList<>();
-    private HashMap<String, String> projectHashMap = new HashMap<>();
-    private List<HashMap<String, String>> projectDatas = new ArrayList<>();
+    //存储新添加的搜索记录
+    private List<String> searchList;
+    private LimitQueue<String> queue;
+    private SharedPreferencesUtil sharedPreferencesUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage_search);
         init();
-        searchView.setSpace(20, 20);
+        //子view的间距
+        searchView.setSpace(horizontalSpace, verticalSpace);
 
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.homepage_android);
-        //测试代码
-        for (int i=0; i<5; i++){
-            TextView textView = new TextView(this);
-            textView.setText("hdoaqangeroge");
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-            textView.setTextColor(getResources().getColor(R.color.colorBlack2));
-            textView.setBackgroundResource(R.drawable.homepage_history_background);
+        searchList = new ArrayList<>();
+        sharedPreferencesUtil = new SharedPreferencesUtil(HomepageSearch.this);
 
-            searchView.addView(textView);
-        }
-        for (int i=0; i<4; i++){
-            //listView
-            projectHashMap.clear();
-            projectHashMap.put("projectName", "创维俱乐部");
-            projectHashMap.put("releaseTime", "2018-1-10");
-            projectHashMap.put("companyName", "腾讯");
-            projectHashMap.put("address", "深圳");
-            projectHashMap.put("time", "6个月");
-            projectHashMap.put("money", "5000");
-            projectDatas.add(projectHashMap);
-            projectBitmap.add(bitmap);
-        }
-
-        homepageBack.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                finish();
-                homepageSearch.removeView(homepageHistory);
-                ListView listView = new ListView(HomepageSearch.this);
-                listView.setLayoutParams(new WindowManager.LayoutParams
-                        (WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT));
-
-                verticalItemAdapter = new VerticalItemAdapter(HomepageSearch.this, projectDatas, projectBitmap);
-                verticalItemAdapter.setOnItemClickListener(new VerticalItemAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Toast.makeText(HomepageSearch.this, "you click projectItem"+position, Toast.LENGTH_SHORT).show();
-                    }
-                });
-                listView.setAdapter(verticalItemAdapter);
-                homepageSearch.addView(listView);
+                finish();
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HomepageSearch.this, "click", Toast.LENGTH_SHORT).show();
+                String s = editTextSearch.getText().toString();
+                s = s.replace(" ", "");
+                if (!s.equals(""))
+                    searchList.add(s);
+                Intent intent = new Intent(HomepageSearch.this, SearchResult.class);
+                intent.putExtra("searchContent", s);
+                startActivity(intent);
             }
         });
         clearHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //清空所有的view,同时把sharedPreferences的搜索历史数据清除
                 searchView.removeAllViews();
+                sharedPreferencesUtil.remove("history");
             }
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        queue = (LimitQueue<String>) sharedPreferencesUtil.getObject("history");
+        if (queue != null){
+            Log.e(TAG, "limitQueue的大小："+queue.getSize());
+
+            if (queue.getSize() > queueSize){
+                for (int i=queueSize; i<queue.getSize(); i++){
+                    TextView textView = new TextView(this);
+                    textView.setText(queue.get(i));
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+                    textView.setTextColor(getResources().getColor(R.color.colorBlack2));
+                    textView.setBackgroundResource(R.drawable.homepage_history_background);
+                    textView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(HomepageSearch.this, SearchResult.class);
+                            startActivity(intent);
+                        }
+                    });
+
+                    searchView.addView(textView);
+                }
+            }
+
+            //记录上次搜索记录的总数
+            queueSize = queue.getSize();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //将新增加的搜索记录添加到原来的队列中
+        if (searchList.size() != 0){
+            if (queue == null)
+                queue = new LimitQueue<>(limit);
+            for (int i=0; i<searchList.size(); i++){
+                queue.offer(searchList.get(i));
+            }
+            searchList.clear();
+            sharedPreferencesUtil.putObject(queue, "history");
+        }
+
+    }
+
     public void init(){
-        homepageSearch = findViewById(R.id.homepage_search);
+        back = findViewById(R.id.homepage_search_back);
         editTextSearch = findViewById(R.id.homepage_editText_search);
-        homepageBack = findViewById(R.id.homepage_back);
-        homepageHistory = findViewById(R.id.homepage_history);
+        search = findViewById(R.id.homepage_back);
 
         searchView = findViewById(R.id.search_view);
         clearHistory = findViewById(R.id.clear_history);
+        hotSearch = findViewById(R.id.hot_search);
     }
 }

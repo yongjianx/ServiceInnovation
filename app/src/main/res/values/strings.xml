@@ -3,10 +3,11 @@
     
     <!--xyj-->
     <string name="editText_hint">请输入关键字</string>
-    <string name="homepage_back">返回</string>
+    <string name="homepage_back">搜索</string>
     <string name="search_history">搜索历史</string>
     <string name="clear_history">清空历史</string>
     <string name="hot_search">热门搜索</string>
+    <string name="post">投递简历</string>
     
 
 </resources>
