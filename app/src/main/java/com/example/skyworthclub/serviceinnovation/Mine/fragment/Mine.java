@@ -1,6 +1,10 @@
 package com.example.skyworthclub.serviceinnovation.Mine.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,13 +22,30 @@ import com.example.skyworthclub.serviceinnovation.Mine.activity.Mine_data;
 import com.example.skyworthclub.serviceinnovation.Mine.activity.Mine_resume;
 import com.example.skyworthclub.serviceinnovation.Mine.activity.MyMessageActivity;
 import com.example.skyworthclub.serviceinnovation.Mine.activity.MySubscribeActivity;
+import com.example.skyworthclub.serviceinnovation.Mine.utils.Constant;
+import com.example.skyworthclub.serviceinnovation.Mine.utils.NetworkUtil;
 import com.example.skyworthclub.serviceinnovation.R;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+
+import java.io.IOException;
+import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by skyworthclub on 2018/1/21.
  */
 
 public class Mine extends Fragment implements View.OnClickListener {
+
+    public static final int LOGIN_REQUEST = 8;
     ImageView setting;
     ImageView avatar;
 
@@ -32,6 +53,9 @@ public class Mine extends Fragment implements View.OnClickListener {
     RelativeLayout mine_part3;
     RelativeLayout mine_part4;
     RelativeLayout mine_part5;
+
+    private boolean mHasLogin;
+    private String mUserName;
 
     @Nullable
     @Override
@@ -89,10 +113,48 @@ public class Mine extends Fragment implements View.OnClickListener {
                 break;
             }
             case R.id.mine_avatar:
-                Intent intent=new Intent(v.getContext(),LoginActivity.class);
-                startActivity(intent);
+                if (mHasLogin) {
+                    PictureSelector.create(this)
+                            .openGallery(PictureMimeType.ofImage())
+                            .maxSelectNum(1)
+                            .forResult(PictureConfig.CHOOSE_REQUEST);
+                } else {
+                    Intent intent=new Intent(v.getContext(),LoginActivity.class);
+                    startActivityForResult(intent, LOGIN_REQUEST);
+                }
                 break;
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case PictureConfig.CHOOSE_REQUEST:
+                    List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
+                    Bitmap bm = BitmapFactory.decodeFile(selectList.get(0).getPath());
+                    avatar.setImageBitmap(bm);
+                    String filePath = "";
+                    Call call = NetworkUtil.getCallByPostForm(Constant.UPLOAD_PHOTO_URL + "/" + mUserName, filePath);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+
+                        }
+                    });
+                    break;
+                case LOGIN_REQUEST:
+                    if (resultCode == LoginActivity.LOGIN_SUCCESS) {
+                        mHasLogin = true;
+                    }
+            }
+        }
     }
 }
