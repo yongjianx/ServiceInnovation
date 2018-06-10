@@ -20,5 +20,7 @@ public class Constant {
     public static String CONFORM_CODE_URL = "http://127.0.0.1/user/idCodeConfirm/";
     //下载文件
     public static String DOWNLOAD_FILE_URL = "http://127.0.0.1/project/requestFile/download/";
+    //上传文件
+    public static String UPLOAD_FILE_URL = "http://127.0.0.1/project/user/workFile/upload/";
 
 }

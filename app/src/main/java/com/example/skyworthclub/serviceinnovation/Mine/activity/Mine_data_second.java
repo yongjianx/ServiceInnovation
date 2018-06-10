@@ -16,9 +16,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.skyworthclub.serviceinnovation.Mine.adapter.DownloadFileAdapter;
+import com.example.skyworthclub.serviceinnovation.Mine.utils.Constant;
+import com.example.skyworthclub.serviceinnovation.Mine.utils.NetworkUtil;
+import com.example.skyworthclub.serviceinnovation.Mine.utils.ToastUtil;
 import com.example.skyworthclub.serviceinnovation.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * Created by 26792 on 2018/3/18.
@@ -85,6 +93,28 @@ public class Mine_data_second extends AppCompatActivity implements View.OnClickL
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == 1) {
                 Uri uri = data.getData();
+                Call call = NetworkUtil.getCallByPostForm(Constant.UPLOAD_FILE_URL, uri.getPath().toString());
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(Mine_data_second.this, "上传失败");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(Mine_data_second.this, "上传成功");
+                            }
+                        });
+                    }
+                });
                 Toast.makeText(this, "文件路径："+uri.getPath().toString(), Toast.LENGTH_SHORT).show();
             }
         }
