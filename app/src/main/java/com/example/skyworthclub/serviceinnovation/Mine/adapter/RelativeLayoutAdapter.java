@@ -47,19 +47,12 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
     View viewitem;
     SharedPreferencesUtil sharedPreferencesUtil;
 
-<<<<<<< HEAD
     public RelativeLayoutAdapter(List<MyRelativeLayout> relativeLayouts, int status, RecyclerView recyclerView) {
         mrelativeLayouts = relativeLayouts;
         mrecyclerView = recyclerView;
         this.status = status;
         sharedPreferencesUtil = new SharedPreferencesUtil(mrecyclerView.getContext());
-=======
-    public RelativeLayoutAdapter(List<MyRelativeLayout>relativeLayouts, int status){
-        mrelativeLayouts=relativeLayouts;
-        this.status=status;
->>>>>>> 6d214970f5669cd3217e88a588a0c909fe1ed7af
     }
-
 
 
     @Override
@@ -212,9 +205,9 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
             mbottom_tv = itemView.findViewById(R.id.mine_resume_number);
         }
     }
-
     /**
      * 判断当前线程是否为主线程
+     *
      * @return
      */
     public boolean isMainThread() {

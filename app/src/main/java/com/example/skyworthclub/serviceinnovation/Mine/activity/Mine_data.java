@@ -15,6 +15,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
@@ -93,6 +95,9 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         String mprofession = null;
         String mphone = null;
         String mmail = null;
+        String mtrade = null;
+        String mstation = null;
+        String mcity = null;
 
         if (sharedPreferencesUtil.getString("姓名") != null) {
             mname = sharedPreferencesUtil.getString("姓名");
@@ -103,6 +108,9 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
             mprofession = sharedPreferencesUtil.getString("专业");
             mphone = sharedPreferencesUtil.getString("手机");
             mmail = sharedPreferencesUtil.getString("邮箱");
+            mtrade = sharedPreferencesUtil.getString("行业");
+            mstation = sharedPreferencesUtil.getString("岗位");
+            mcity = sharedPreferencesUtil.getString("意向城市");
             circleimage.setImageBitmap(sharedPreferencesUtil.getBitmap("avatar"));
         }
 
@@ -114,6 +122,10 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         MineData profession = new MineData("专业", "#FFEE58", mprofession);
         MineData phone = new MineData("手机", "#FF6C72", mphone);
         MineData mail = new MineData("邮箱", "#4FC3F7", mmail);
+        MineData trade = new MineData("行业", "#00D5DD", mtrade);
+        MineData station = new MineData("岗位", "#FFEE58", mstation);
+        MineData city = new MineData("意向城市", "#FF6C72", mcity);
+
         mineData.add(name);
         mineData.add(gender);
         mineData.add(nikename);
@@ -122,6 +134,9 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         mineData.add(profession);
         mineData.add(phone);
         mineData.add(mail);
+        mineData.add(trade);
+        mineData.add(station);
+        mineData.add(city);
     }
 
     @Override
@@ -143,7 +158,7 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //写退出操作
+                        //写退出操作，调用系统返回键函数
                         onBackPressed();
                     }
                 });
@@ -157,78 +172,15 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
                 break;
             }
             case R.id.mine_data_title_next: {
-//                保存数据&跳转界面
-<<<<<<< HEAD
-
-                try {
-                    saveData(linearLayoutManager);
-                    Toast.makeText(this, "aa", Toast.LENGTH_SHORT).show();
-                    Log.e(TAG, "onClick: next");
-                    Intent intent = new Intent(v.getContext(), Mine_data_second.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Log.e("test", "savadata: error ");
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(
-                            InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                    e.printStackTrace();
-                }
-
+//                跳转界面
+                Intent intent = new Intent(v.getContext(), Mine_data_second.class);
+                startActivity(intent);
                 break;
             }
             default:
                 break;
-=======
-                Toast.makeText(this, "aa", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "onClick: next");
-                saveData(linearLayoutManager);
-                Intent intent=new Intent(v.getContext(),Mine_data_second.class);
-                startActivity(intent);
-                break;
-            }
-            default:break;
->>>>>>> 6d214970f5669cd3217e88a588a0c909fe1ed7af
         }
     }
-
-    // 数据保存
-    public void saveData(LinearLayoutManager manager) {
-<<<<<<< HEAD
-        Toast.makeText(this, "click next", Toast.LENGTH_SHORT).show();
-        Log.e("test", "saveData: in for function");
-        for (int position = 0; position <= 7; position++) {
-=======
-        Log.e(TAG, "saveData: in savedata");
-         SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
-                for (int position=0;position<=7;position++){
-                    Toast.makeText(this, "mm", Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "saveData: in for function");
->>>>>>> 6d214970f5669cd3217e88a588a0c909fe1ed7af
-//            获取recyclerview里面的itemview
-            View view = manager.findViewByPosition(position);
-//            获取itemview里面edittext的实例
-<<<<<<< HEAD
-            RelativeLayout layout = (RelativeLayout) view;
-            EditText editText = layout.findViewById(R.id.mine_data_edittext);
-//                    editor.clear().commit();
-            String value = editText.getText().toString();
-            sharedPreferencesUtil.putString(mineData.get(position).getName(), value);
-            Log.e("test", "name:" + mineData.get(position).getName() + "value:" + value);
-        }
-        Toast.makeText(this, "savadata!!!", Toast.LENGTH_SHORT).show();
-    }
-=======
-                    RelativeLayout layout=(RelativeLayout)view;
-                    EditText editText=layout.findViewById(R.id.mine_data_edittext);
-//                    editor.clear().commit();
-                    String value = editText.getText().toString();
-                    editor.putString(mineData.get(position).getName(), value);
-                    Log.d(TAG, "name:" + mineData.get(position).getName() + "value:" + value);
-//                    Log.e(TAG, "saveData: save");
-                    editor.commit();
-                }
-            }
->>>>>>> 6d214970f5669cd3217e88a588a0c909fe1ed7af
 
     private void openAlbum() {
         Intent intent = new Intent("android.intent.action.GET_CONTENT");

@@ -7,8 +7,7 @@
     <string name="search_history">搜索历史</string>
     <string name="clear_history">清空历史</string>
     <string name="hot_search">热门搜索</string>
-
-    <string name="resume_tv_first">%1$d/100</string>
-    <string name="resume_tv_second">%1$d/200</string>
     <string name="post">投递简历</string>
+    <string name="resume_tv_first">%0$d/100</string>
+    <string name="resume_tv_second">%0$d/200</string>
 </resources>

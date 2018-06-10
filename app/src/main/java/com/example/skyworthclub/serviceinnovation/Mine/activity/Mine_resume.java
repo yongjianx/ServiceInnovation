@@ -129,11 +129,15 @@ public class Mine_resume extends AppCompatActivity {
                 String value = editText.getText().toString();
                 sharedPreferencesUtil.putString(relativeLayouts.get(position).getName(), value);
                 Log.e("test", "saveData: close input" + relativeLayouts.get(position).getName() + value);
-                editText.setInputType(InputType.TYPE_NULL);
-                Toast.makeText(this, "saveData", Toast.LENGTH_SHORT).show();
+                editText.setCursorVisible(false);
+                editText.setFocusable(false);
+                editText.setFocusableInTouchMode(false);
             } else {
                 Log.e("test", "saveData:open input ");
-                editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_CLASS_TEXT);
+                editText.setCursorVisible(true);
+                editText.setFocusable(true);
+                editText.setFocusableInTouchMode(true);
+                editText.requestFocus();
             }
         }
     }

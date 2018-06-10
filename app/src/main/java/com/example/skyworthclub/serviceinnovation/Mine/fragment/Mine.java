@@ -54,9 +54,6 @@ public class Mine extends Fragment implements View.OnClickListener {
         mine_part5.setOnClickListener(this);
         setting.setOnClickListener(this);
         avatar.setOnClickListener(this);
-
-        mCircleImg.setOnClickListener(this);
-
     }
 
     @Override
