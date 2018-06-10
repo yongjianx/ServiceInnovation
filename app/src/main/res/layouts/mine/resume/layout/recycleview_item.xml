@@ -35,7 +35,9 @@
         android:layout_centerHorizontal="true"
         android:gravity="top"
         android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginLeft="15dp"
+        android:lineSpacingExtra="20sp"
+        android:inputType="textMultiLine"/>
     <RelativeLayout
         android:layout_below="@id/mine_resume_et"
         android:layout_width="match_parent"
