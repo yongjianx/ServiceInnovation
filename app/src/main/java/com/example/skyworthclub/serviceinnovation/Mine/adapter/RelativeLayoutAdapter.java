@@ -55,7 +55,6 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
     }
 
 
-
     @Override
     public RelativeLayoutAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_item, parent, false);
@@ -209,6 +208,7 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
 
     /**
      * 判断当前线程是否为主线程
+     *
      * @return
      */
     public boolean isMainThread() {

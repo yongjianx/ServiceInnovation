@@ -94,17 +94,17 @@ public class Mine_resume extends AppCompatActivity {
                         saveData(linearLayoutManager);
                     } catch (Exception e) {
                         Log.e("test", "not savedata");
-                        Log.e("test2", "edit_status: "+edit_status );
+                        Log.e("test2", "edit_status: " + edit_status);
                         e.printStackTrace();
                     }
-                    Log.e("test2", "edit_status: "+edit_status);
+                    Log.e("test2", "edit_status: " + edit_status);
                     Toast.makeText(Mine_resume.this, "baocun", Toast.LENGTH_SHORT).show();
                     //设置editview为可编辑状态
                 } else {
                     try {
                         edit_status = 0;
                         saveData(linearLayoutManager);
-                        Log.e("test2", "edit_status: "+edit_status);
+                        Log.e("test2", "edit_status: " + edit_status);
                         Toast.makeText(Mine_resume.this, "bianji", Toast.LENGTH_SHORT).show();
                         textView.setText("编辑");
                     } catch (Exception e) {
@@ -125,15 +125,20 @@ public class Mine_resume extends AppCompatActivity {
 //            获取itemview里面edittext的实例
             RelativeLayout layout = (RelativeLayout) view;
             EditText editText = layout.findViewById(R.id.mine_resume_et);
-            Log.e("test", "edit_status : "+edit_status);
+            Log.e("test", "edit_status : " + edit_status);
             if (edit_status == 0) {
                 String value = editText.getText().toString();
                 sharedPreferencesUtil.putString(relativeLayouts.get(position).getName(), value);
                 Log.e("test", "saveData: close input" + relativeLayouts.get(position).getName() + value);
-                editText.setInputType(InputType.TYPE_NULL);
+                editText.setCursorVisible(false);
+                editText.setFocusable(false);
+                editText.setFocusableInTouchMode(false);
             } else {
                 Log.e("test", "saveData:open input ");
-                editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE|InputType.TYPE_CLASS_TEXT);
+                editText.setCursorVisible(true);
+                editText.setFocusable(true);
+                editText.setFocusableInTouchMode(true);
+                editText.requestFocus();
             }
             Toast.makeText(this, "saveData", Toast.LENGTH_SHORT).show();
         }
