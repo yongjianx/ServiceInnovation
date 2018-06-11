@@ -8,22 +8,27 @@ public class MineData {
     private String mcolor;
     private String medittext;
     private String name;
-    public MineData(String name,String color,String edittext){
-        this.name=name;
-        mcolor=color;
-        medittext=edittext;
+
+    public MineData(String name, String color, String edittext) {
+        this.name = name;
+        mcolor = color;
+        medittext = edittext;
     }
-    public MineData(String name,String color){
-        this.name=name;
-        mcolor=color;
+
+    public MineData(String name, String color) {
+        this.name = name;
+        mcolor = color;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public String getMcolor(){
+
+    public String getMcolor() {
         return mcolor;
     }
-    public  String getMedittext(){
+
+    public String getMedittext() {
         return medittext;
     }
 }
