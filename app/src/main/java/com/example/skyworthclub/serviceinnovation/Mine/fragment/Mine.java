@@ -90,6 +90,8 @@ public class Mine extends Fragment implements View.OnClickListener {
             case R.id.mine_part2:{
                 Toast.makeText(v.getContext(), "data", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(v.getContext(),Mine_data.class);
+                String data="minelayout";
+                intent.putExtra("extra_data",data);
                 startActivity(intent);
                 break;
             }

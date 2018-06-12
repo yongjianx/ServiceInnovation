@@ -40,7 +40,9 @@
             android:fontFamily="@font/noto_sans"
             android:hint="请输入"
             android:maxLength="20"
-            android:textColor="#3F88FC" />
+            android:textColor="#3F88FC"
+            android:singleLine="true"
+            android:imeOptions="actionNext"/>
     </RelativeLayout>
 
 </RelativeLayout>

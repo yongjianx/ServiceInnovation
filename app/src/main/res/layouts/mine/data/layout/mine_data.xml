@@ -19,6 +19,7 @@
             android:src="@drawable/back_icon" />
 
         <TextView
+            android:id="@+id/mine_data_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -53,6 +54,7 @@
         android:src="@drawable/photo" />
 
     <TextView
+        android:id="@+id/mine_avatar_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/mine_data_avatar"
