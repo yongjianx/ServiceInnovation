@@ -5,17 +5,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalItemAdapter;
+import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalAdapter2;
 import com.example.skyworthclub.serviceinnovation.R;
 
 import java.util.ArrayList;
@@ -30,7 +31,6 @@ public class SearchResult extends AppCompatActivity {
     private EditText editText;
     private TextView search;
 
-    private VerticalItemAdapter verticalItemAdapter;
     //存放listView数据,耗时任务
     private Bitmap bitmap;
     private List<Bitmap> projectBitmap = new ArrayList<>();
@@ -85,17 +85,20 @@ public class SearchResult extends AppCompatActivity {
     }
 
     private void addView(){
-        ListView listView = new ListView(SearchResult.this);
+        RecyclerView listView = new RecyclerView(SearchResult.this);
         listView.setLayoutParams(new WindowManager.LayoutParams
                 (WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT));
 
-        verticalItemAdapter = new VerticalItemAdapter(SearchResult.this, projectDatas, projectBitmap);
-        verticalItemAdapter.setOnItemClickListener(new VerticalItemAdapter.OnItemClickListener() {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
+        VerticalAdapter2 verticalItemAdapter = new VerticalAdapter2(projectDatas, projectBitmap);
+        verticalItemAdapter.setOnItemClickListener(new VerticalAdapter2.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(SearchResult.this, "you click projectItem"+position, Toast.LENGTH_SHORT).show();
             }
         });
+        listView.setLayoutManager(layoutManager);
         listView.setAdapter(verticalItemAdapter);
         MainSearchResult.addView(listView);
     }

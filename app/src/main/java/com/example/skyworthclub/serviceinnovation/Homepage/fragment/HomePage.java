@@ -13,17 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.skyworthclub.serviceinnovation.Homepage.activity.HomepageSearch;
 import com.example.skyworthclub.serviceinnovation.Homepage.activity.ProjectDetail;
 import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.GlideImageLoader;
-import com.example.skyworthclub.serviceinnovation.Homepage.utils.SharedPreferencesUtil;
 import com.example.skyworthclub.serviceinnovation.R;
-import com.example.skyworthclub.serviceinnovation.Homepage.adapter.HorizontalItemAdapter;
-import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalItemAdapter;
+import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalAdapter2;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -43,20 +40,15 @@ public class HomePage extends Fragment {
     private Banner banner;
 
     //竖向listView
-    private ListView projectListView;
-    private VerticalItemAdapter VerticalItemAdapter;
-    //存放listView数据,耗时任务
+    private RecyclerView verticalItemView;
+    //存放竖向listView数据,耗时任务
     private Bitmap bitmap;
     private List<Bitmap> projectBitmap = new ArrayList<>();
     private HashMap<String, String> projectHashMap = new HashMap<>();
     private List<HashMap<String, String>> projectDatas = new ArrayList<>();
 
-    //recyclerView
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-
-    //横向listView
-    private HorizontalItemAdapter HorizontalItemAdapter;
+    //horizontalItemView
+    private RecyclerView horizontalItemView;
     private List<String> datas = new ArrayList<>();
 
     @Override
@@ -70,7 +62,7 @@ public class HomePage extends Fragment {
 
         bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.homepage_android);
 
-        //recyclerView
+        //horizontalItemView
         datas.add("互联网");
         datas.add("电子电气");
         datas.add("媒体设计");
@@ -98,8 +90,8 @@ public class HomePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.homepage_main, container, false);
         banner = view.findViewById(R.id.xyj_banner);
-        recyclerView = view.findViewById(R.id.xyj_recyclerView);
-        projectListView = view.findViewById(R.id.xyj_listView);
+        horizontalItemView = view.findViewById(R.id.xyj_recyclerView);
+        verticalItemView = view.findViewById(R.id.xyj_listView);
         ImageView homepageSearch = view.findViewById(R.id.homepage_search);
 
         //search搜索的点击事件
@@ -112,22 +104,8 @@ public class HomePage extends Fragment {
         });
 
         initHorizontalView();
-        // 设置布局管理器
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(HorizontalItemAdapter);
+        initVerticalView();
 
-        //listView的配置
-        VerticalItemAdapter = new VerticalItemAdapter(getContext(), projectDatas, projectBitmap);
-        VerticalItemAdapter.setOnItemClickListener(new VerticalItemAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                //Toast.makeText(getContext(), "你点击了projectListView" + position, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getContext(), ProjectDetail.class);
-                startActivity(intent);
-
-            }
-        });
-        projectListView.setAdapter(VerticalItemAdapter);
         initBanner();
 
         return view;
@@ -178,14 +156,39 @@ public class HomePage extends Fragment {
     横向listItem初始化
      */
     private void initHorizontalView(){
-        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        HorizontalItemAdapter = new HorizontalItemAdapter(datas);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        HorizontalItemAdapter horizontalItemAdapter;
+        horizontalItemAdapter = new HorizontalItemAdapter(datas);
 
-        HorizontalItemAdapter.setOnItemClickListener(new HorizontalItemAdapter.OnItemClickListener() {
+        horizontalItemAdapter.setOnItemClickListener(new HorizontalItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(getContext(), "click " + position, Toast.LENGTH_SHORT).show();
             }
         });
+
+        // 设置布局管理器
+        horizontalItemView.setLayoutManager(layoutManager);
+        horizontalItemView.setAdapter(horizontalItemAdapter);
+    }
+
+    /*
+    竖向listItem初始化
+     */
+    private void initVerticalView(){
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false);
+
+        VerticalAdapter2 VerticalAdapter2;
+        //listView的配置
+        VerticalAdapter2 = new VerticalAdapter2(projectDatas, projectBitmap);
+        VerticalAdapter2.setOnItemClickListener(new VerticalAdapter2.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(getContext(), ProjectDetail.class);
+                startActivity(intent);
+            }
+        });
+        verticalItemView.setLayoutManager(layoutManager);
+        verticalItemView.setAdapter(VerticalAdapter2);
     }
 }
