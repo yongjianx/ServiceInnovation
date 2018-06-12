@@ -67,7 +67,6 @@ public class Mine_data_second extends AppCompatActivity implements View.OnClickL
         finish_text.setFocusableInTouchMode(true);
         finish_text.requestFocus();
 
-
         mAddFileTv = findViewById(R.id.add_file_tv);
         mAddFileImg = findViewById(R.id.add_file);
         mAddFileTv.setOnClickListener(this);
@@ -116,7 +115,7 @@ public class Mine_data_second extends AppCompatActivity implements View.OnClickL
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("*/*");
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
                 break;
             default:
 
@@ -165,7 +164,7 @@ public class Mine_data_second extends AppCompatActivity implements View.OnClickL
                         });
                     }
                 });
-                Toast.makeText(this, "文件路径："+uri.getPath().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "文件路径：" + uri.getPath().toString(), Toast.LENGTH_SHORT).show();
             }
 
         }
