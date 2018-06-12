@@ -135,9 +135,11 @@ public class Mine_data_second extends AppCompatActivity implements View.OnClickL
         if (token != null) {
             InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             im.hideSoftInputFromWindow(token, 0);
+        }
+    }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == 1) {
                 Uri uri = data.getData();
