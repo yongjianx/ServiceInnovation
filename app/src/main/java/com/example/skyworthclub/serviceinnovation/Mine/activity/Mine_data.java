@@ -56,11 +56,14 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
     public static final int CHOOSE_PHOTO = 2;
     private List<MineData> mineData = new ArrayList<>();
     private TextView next;
+    private TextView mine_avatar_tv;
     private ImageView back;
     private ImageView circleimage;
+    private TextView title;
     private String TAG = "Mine_data";
     LinearLayoutManager linearLayoutManager;
     SharedPreferencesUtil sharedPreferencesUtil;
+    String intent_data=null;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,8 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         next = findViewById(R.id.mine_data_title_next);
         back = findViewById(R.id.mine_data_title_back);
         circleimage = findViewById(R.id.mine_data_avatar);
+        title=findViewById(R.id.mine_data_title_text);
+        mine_avatar_tv=findViewById(R.id.mine_avatar_tv);
         next.setOnClickListener(this);
         back.setOnClickListener(this);
         circleimage.setOnClickListener(this);
@@ -81,8 +86,15 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         RecyclerView recyclerView = findViewById(R.id.mine_data_recyclerview);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        MinedataAdapter adapter = new MinedataAdapter(mineData, this);
+        MinedataAdapter adapter = new MinedataAdapter(mineData, this,linearLayoutManager);
         recyclerView.setAdapter(adapter);
+        //        从Intent中取值，判断是从哪里跳转过来的
+        Intent intent=getIntent();
+        intent_data=intent.getStringExtra("extra_data");
+        if (intent_data.equals("minelayout")){
+            title.setText("我的资料");
+//            next.setText("");
+        }
     }
 
     private void initView() {
@@ -98,8 +110,8 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         String mtrade = null;
         String mstation = null;
         String mcity = null;
-
-        if (sharedPreferencesUtil.getString("姓名") != null) {
+//
+//        if (sharedPreferencesUtil.getString("姓名") != null) {
             mname = sharedPreferencesUtil.getString("姓名");
             mgender = sharedPreferencesUtil.getString("性别");
             mnickname = sharedPreferencesUtil.getString("昵称");
@@ -112,7 +124,7 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
             mstation = sharedPreferencesUtil.getString("岗位");
             mcity = sharedPreferencesUtil.getString("意向城市");
             circleimage.setImageBitmap(sharedPreferencesUtil.getBitmap("avatar"));
-        }
+//        }
 
         MineData name = new MineData("姓名", "#00D5DD", mname);
         MineData gender = new MineData("性别", "#FFEE58", mgender);
@@ -148,6 +160,7 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
                     ActivityCompat.requestPermissions((Activity) v.getContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 } else {
                     openAlbum();
+                    mine_avatar_tv.setText("");
                 }
                 break;
             }
