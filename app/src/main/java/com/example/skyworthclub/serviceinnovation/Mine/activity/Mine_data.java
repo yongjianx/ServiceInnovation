@@ -86,7 +86,8 @@ public class Mine_data extends AppCompatActivity implements View.OnClickListener
         RecyclerView recyclerView = findViewById(R.id.mine_data_recyclerview);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        MinedataAdapter adapter = new MinedataAdapter(mineData, this,linearLayoutManager);
+//        MinedataAdapter adapter = new MinedataAdapter(mineData, this,linearLayoutManager);
+        MinedataAdapter adapter=new MinedataAdapter(mineData,this);
         recyclerView.setAdapter(adapter);
         //        从Intent中取值，判断是从哪里跳转过来的
         Intent intent=getIntent();
