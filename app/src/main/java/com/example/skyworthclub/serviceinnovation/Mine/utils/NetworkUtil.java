@@ -76,6 +76,6 @@ public class NetworkUtil {
                 .url(url)
                 .post(requestBody)
                 .build();
-        return okhttpClient.newCall(request);
+        return getOkhttpClient().newCall(request);
     }
 }
