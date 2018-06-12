@@ -1,35 +1,22 @@
 package com.example.skyworthclub.serviceinnovation.Homepage.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.skyworthclub.serviceinnovation.Homepage.adapter.VerticalItemAdapter;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.LimitQueue;
 import com.example.skyworthclub.serviceinnovation.Homepage.utils.SharedPreferencesUtil;
 import com.example.skyworthclub.serviceinnovation.Homepage.view.SearchView;
 import com.example.skyworthclub.serviceinnovation.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 public class HomepageSearch extends AppCompatActivity {

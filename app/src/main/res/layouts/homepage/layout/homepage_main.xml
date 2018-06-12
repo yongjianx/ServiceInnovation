@@ -38,17 +38,14 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="8dp"
+        android:layout_height="4dp"
         android:background="@color/colorFFEEEEEE"/>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/xyj_listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:dividerHeight="4dp"
-        android:scrollingCache="false"
-        android:animationCache="false">
+        android:layout_height="wrap_content">
 
-    </ListView>
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

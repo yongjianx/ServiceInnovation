@@ -73,6 +73,7 @@
                     android:background="#00D5DD" />
 
                 <TextView
+                    android:focusable="true"
                     android:id="@+id/index"
                     android:text="指标概述 (XXX指标)"
                     android:textSize="15dp"
@@ -103,6 +104,7 @@
                     android:background="#FFEE58" />
 
                 <TextView
+                    android:focusable="true"
                     android:id="@+id/index2"
                     android:text="指标概述 (XXX指标)"
                     android:textSize="15dp"
@@ -133,6 +135,7 @@
                     android:background="#4FC3F7" />
 
                 <TextView
+                    android:focusable="true"
                     android:id="@+id/index3"
                     android:text="指标概述 (XXX指标)"
                     android:textSize="15dp"

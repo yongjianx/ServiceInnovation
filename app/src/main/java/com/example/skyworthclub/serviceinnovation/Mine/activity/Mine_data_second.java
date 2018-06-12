@@ -44,7 +44,6 @@ public class Mine_data_second extends AppCompatActivity implements View.OnClickL
         finish_text.setFocusable(true);
         finish_text.setFocusableInTouchMode(true);
         finish_text.requestFocus();
-
         back_button.setOnClickListener(this);
         finish_text.setOnClickListener(this);
         mRvDownloadFile = findViewById(R.id.download_file_rv);
