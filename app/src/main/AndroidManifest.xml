@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
           package="com.example.skyworthclub.serviceinnovation">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +22,6 @@
         </activity>
         <activity
             android:name=".Mine.activity.Mine_data"
-
             android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".Mine.activity.Mine_resume"
@@ -34,8 +32,6 @@
         <activity
             android:name=".Mine.activity.Mine_add_sub"
             android:windowSoftInputMode="stateHidden"/>
-
-
 
         <meta-data
             android:name="preloaded_fonts"
@@ -54,10 +50,10 @@
         </activity>
         <activity android:name=".Project.activity.projectDetailActivity">
         </activity>
-
-        <activity android:name=".Homepage.activity.SearchResult" />
-        <activity android:name=".Homepage.activity.ProjectDetail"></activity>
-
+        <activity android:name=".Homepage.activity.SearchResult"/>
+        <activity android:name=".Homepage.activity.ProjectDetail"/>
+        <activity android:name=".Mine.activity.ForgetPasswordActivity">
+        </activity>
     </application>
 
 </manifest>
