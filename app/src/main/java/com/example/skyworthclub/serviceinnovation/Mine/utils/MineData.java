@@ -5,9 +5,9 @@ package com.example.skyworthclub.serviceinnovation.Mine.utils;
  */
 
 public class MineData {
-    private String mcolor;
-    private String medittext;
-    private String name;
+    private String mcolor=null;
+    private String medittext=null;
+    private String name=null;
 
     public MineData(String name, String color, String edittext) {
         this.name = name;

@@ -125,10 +125,10 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
                 position = holder.getAdapterPosition();
                 Toast.makeText(view.getContext(), "test" + position, Toast.LENGTH_SHORT).show();
                 if (position != 1) {
-                    if (temp.length() != 0) {
+//                    if (temp.length() != 0) {
                         holder.mbottom_tv.setText(String.format(view.getContext().getResources().getString(R.string.resume_tv_first), temp.length()));
-                    }
-                    if (temp.length() >= 100) {
+//                    }
+                    if (temp.length() > 100) {
                         if (show) {
                             Toast.makeText(view.getContext(), "不可以超过100字", Toast.LENGTH_SHORT).show();
                             show = false;
@@ -143,11 +143,11 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
                     }
 
                 } else {
-                    if (temp.length() != 0) {
+//                    if (temp.length() != 0) {
                         Log.e("test", "afterTextChanged: " + temp.length());
                         holder.mbottom_tv.setText(String.format(view.getContext().getResources().getString(R.string.resume_tv_second), temp.length()));
-                    }
-                    if (temp.length() >= 200) {
+
+                    if (temp.length() >200) {
                         if (show) {
                             Toast.makeText(view.getContext(), "不可以超过200字", Toast.LENGTH_SHORT).show();
                             show = false;
@@ -173,6 +173,7 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
         holder.mview.setBackgroundColor(Color.parseColor(relativeLayout.getMcolor()));
         holder.mtextView.setText(relativeLayout.getMtitle_tv());
         holder.mbottom_tv.setText(relativeLayout.getMbottom_tv());
+
 //        初始化字数
         String string_length = sharedPreferencesUtil.getString("string_length" + position);
         if (string_length != null) {
@@ -205,6 +206,7 @@ public class RelativeLayoutAdapter extends RecyclerView.Adapter<RelativeLayoutAd
             mbottom_tv = itemView.findViewById(R.id.mine_resume_number);
         }
     }
+
     /**
      * 判断当前线程是否为主线程
      *
