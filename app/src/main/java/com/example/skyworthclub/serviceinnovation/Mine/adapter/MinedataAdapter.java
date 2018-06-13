@@ -32,7 +32,7 @@ import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 public class MinedataAdapter extends RecyclerView.Adapter<MinedataAdapter.ViewHolder>  {
     private Context context;
     private final List<MineData> mineDatas;
-    private List<String> mEdittextDatas = new ArrayList<>(8);
+    private List<String> mEdittextDatas = new ArrayList<>(11);
     private String[] sexArry=new String[]{"女","男"};
     public MinedataAdapter(List<MineData> mineData,Context context){
         this.mineDatas=mineData;
